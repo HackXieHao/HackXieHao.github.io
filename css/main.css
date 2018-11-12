@@ -2015,7 +2015,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #1df169;
+  background: #c1759c;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3150,4 +3150,7 @@ ul.breadcrumb li+li:last-child {
   .post-body {
     text-align: justify;
   }
+}
+body {
+  background-image: url("/images/background.jpg");
 }
