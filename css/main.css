@@ -2015,7 +2015,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff03;
+  background: #ff736f;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3194,4 +3194,12 @@ body {
 }
 .highlight:hover .btn-copy {
   opacity: 1;
+}
+.post-body a {
+  color: #0593d3;
+  border-bottom: none;
+  text-decoration: underline;
+}
+.post-body a:hover {
+  color: #0477ab;
 }
