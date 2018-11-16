@@ -134,21 +134,21 @@
 
 
 
-  <meta name="description" content="Spring Boot系列（三）：Thymeleaf的使用1 关于模板引擎常见的模板引用有：JSP、Velocity、Freemarker、Thymeleaf 模板引擎作用如下图所示：  即将Controller层放置的数据动态显示在View层。 SpringBoot推荐使用Thymeleaf：语法更简单，功能更强大。 2 关于Thymeleaf2.1 引入Thymeleaf1234&amp;lt;dep">
+  <meta name="description" content="Spring Boot系列（五）：Web开发之国际化与拦截器1 国际化1.1 一般开发步骤 编写国际化配置文件； 使用ResourceBundleMessageSource管理国际化资源文件 在页面使用fmt:message取出国际化内容  1.2 编写国际化配置文件 创建国际化配置文件，存入如下文件格式：    抽取页面上需要国际化显示的内容，在Spring Boot中可以使用如下方式开发：">
 <meta name="keywords" content="Spring Boot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring Boot系列（三）：Thymeleaf的使用">
-<meta property="og:url" content="http://yoursite.com/2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/index.html">
+<meta property="og:title" content="Spring Boot系列（五）：Web开发之国际化与拦截器">
+<meta property="og:url" content="http://yoursite.com/2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/index.html">
 <meta property="og:site_name" content="ShareHao">
-<meta property="og:description" content="Spring Boot系列（三）：Thymeleaf的使用1 关于模板引擎常见的模板引用有：JSP、Velocity、Freemarker、Thymeleaf 模板引擎作用如下图所示：  即将Controller层放置的数据动态显示在View层。 SpringBoot推荐使用Thymeleaf：语法更简单，功能更强大。 2 关于Thymeleaf2.1 引入Thymeleaf1234&amp;lt;dep">
+<meta property="og:description" content="Spring Boot系列（五）：Web开发之国际化与拦截器1 国际化1.1 一般开发步骤 编写国际化配置文件； 使用ResourceBundleMessageSource管理国际化资源文件 在页面使用fmt:message取出国际化内容  1.2 编写国际化配置文件 创建国际化配置文件，存入如下文件格式：    抽取页面上需要国际化显示的内容，在Spring Boot中可以使用如下方式开发：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/001.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/002.png">
-<meta property="og:updated_time" content="2018-11-15T15:06:01.106Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/001.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/002.png">
+<meta property="og:updated_time" content="2018-11-16T15:59:03.415Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring Boot系列（三）：Thymeleaf的使用">
-<meta name="twitter:description" content="Spring Boot系列（三）：Thymeleaf的使用1 关于模板引擎常见的模板引用有：JSP、Velocity、Freemarker、Thymeleaf 模板引擎作用如下图所示：  即将Controller层放置的数据动态显示在View层。 SpringBoot推荐使用Thymeleaf：语法更简单，功能更强大。 2 关于Thymeleaf2.1 引入Thymeleaf1234&amp;lt;dep">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/001.png">
+<meta name="twitter:title" content="Spring Boot系列（五）：Web开发之国际化与拦截器">
+<meta name="twitter:description" content="Spring Boot系列（五）：Web开发之国际化与拦截器1 国际化1.1 一般开发步骤 编写国际化配置文件； 使用ResourceBundleMessageSource管理国际化资源文件 在页面使用fmt:message取出国际化内容  1.2 编写国际化配置文件 创建国际化配置文件，存入如下文件格式：    抽取页面上需要国际化显示的内容，在Spring Boot中可以使用如下方式开发：">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/001.png">
 
 
 
@@ -157,7 +157,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/">
 
 
 
@@ -167,7 +167,7 @@
   };
 </script>
 
-  <title>Spring Boot系列（三）：Thymeleaf的使用 | ShareHao</title>
+  <title>Spring Boot系列（五）：Web开发之国际化与拦截器 | ShareHao</title>
   
 
 
@@ -433,7 +433,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShareHao">
@@ -450,7 +450,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spring Boot系列（三）：Thymeleaf的使用
+          <h1 class="post-title" itemprop="name headline">Spring Boot系列（五）：Web开发之国际化与拦截器
               
             
           </h1>
@@ -475,7 +475,7 @@
                 
               
 
-              <time title="创建时间：2018-11-15 22:58:51 / 修改时间：23:06:01" itemprop="dateCreated datePublished" datetime="2018-11-15T22:58:51+08:00">2018-11-15</time>
+              <time title="创建时间：2018-11-16 23:56:44 / 修改时间：23:59:03" itemprop="dateCreated datePublished" datetime="2018-11-16T23:56:44+08:00">2018-11-16</time>
             
 
             
@@ -494,9 +494,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/#comments" itemprop="discussionUrl">
+                <a href="/2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -527,7 +527,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  866 字
+                  904 字
                 </span>
               
 
@@ -543,7 +543,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -566,53 +566,49 @@
       
 
       
-        <h2 id="Spring-Boot系列（三）：Thymeleaf的使用"><a href="#Spring-Boot系列（三）：Thymeleaf的使用" class="headerlink" title="Spring Boot系列（三）：Thymeleaf的使用"></a>Spring Boot系列（三）：Thymeleaf的使用</h2><h3 id="1-关于模板引擎"><a href="#1-关于模板引擎" class="headerlink" title="1 关于模板引擎"></a>1 关于模板引擎</h3><p>常见的模板引用有：JSP、Velocity、Freemarker、Thymeleaf</p>
-<p>模板引擎作用如下图所示：</p>
-<p><img src="/2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/001.png" alt="模板引擎作用图示"></p>
-<p>即将Controller层放置的数据动态显示在View层。</p>
-<p>SpringBoot推荐使用Thymeleaf：语法更简单，功能更强大。</p>
-<h3 id="2-关于Thymeleaf"><a href="#2-关于Thymeleaf" class="headerlink" title="2 关于Thymeleaf"></a>2 关于Thymeleaf</h3><h4 id="2-1-引入Thymeleaf"><a href="#2-1-引入Thymeleaf" class="headerlink" title="2.1 引入Thymeleaf"></a>2.1 引入Thymeleaf</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>切换 thymeleaf 版本：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">thymeleaf.version</span>&gt;</span>3.0.9.RELEASE<span class="tag">&lt;/<span class="name">thymeleaf.version</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 布局功能的支持程序  thymeleaf3主程序  layout2以上版本 --&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- thymeleaf2   layout1--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">thymeleaf-layout-dialect.version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">thymeleaf-layout-dialect.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-2-Thymeleaf-的使用"><a href="#2-2-Thymeleaf-的使用" class="headerlink" title="2.2 Thymeleaf 的使用"></a>2.2 Thymeleaf 的使用</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.thymeleaf"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThymeleafProperties</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Charset DEFAULT_ENCODING = Charset.forName(<span class="string">"UTF-8"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> MimeType DEFAULT_CONTENT_TYPE = MimeType.valueOf(<span class="string">"text/html"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEFAULT_PREFIX = <span class="string">"classpath:/templates/"</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEFAULT_SUFFIX = <span class="string">".html"</span>;</span><br><span class="line">  	<span class="comment">//</span></span><br></pre></td></tr></table></figure>
-<p>我们只需要把HTML页面放在<strong>classpath:/templates/</strong>，thymeleaf就能自动渲染。</p>
-<p>具体使用：</p>
-<ol>
-<li><p>导入thymeleaf的名称空间（编写代码时自动提示）</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        <h2 id="Spring-Boot系列（五）：Web开发之国际化与拦截器"><a href="#Spring-Boot系列（五）：Web开发之国际化与拦截器" class="headerlink" title="Spring Boot系列（五）：Web开发之国际化与拦截器"></a>Spring Boot系列（五）：Web开发之国际化与拦截器</h2><h3 id="1-国际化"><a href="#1-国际化" class="headerlink" title="1 国际化"></a>1 国际化</h3><h4 id="1-1-一般开发步骤"><a href="#1-1-一般开发步骤" class="headerlink" title="1.1 一般开发步骤"></a>1.1 一般开发步骤</h4><ol>
+<li>编写国际化配置文件；</li>
+<li>使用ResourceBundleMessageSource管理国际化资源文件</li>
+<li>在页面使用fmt:message取出国际化内容</li>
+</ol>
+<h4 id="1-2-编写国际化配置文件"><a href="#1-2-编写国际化配置文件" class="headerlink" title="1.2 编写国际化配置文件"></a>1.2 编写国际化配置文件</h4><ol>
+<li>创建国际化配置文件，存入如下文件格式：</li>
+</ol>
+<p><img src="/2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/001.png" alt="国际化文件存放格式"></p>
+<ol start="2">
+<li><p>抽取页面上需要国际化显示的内容，在Spring Boot中可以使用如下方式开发：</p>
+<p><img src="/2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/002.png" alt="Spring Boot简化国际化开发"></p>
 </li>
-<li><p>使用thymeleaf 语法</p>
+<li><p>在application.properties中修改国际化文件访问路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#修改国际化配置文件的路径及基础访问名  默认为类路径下messages</span><br><span class="line">spring.messages.basename=i18n.login</span><br></pre></td></tr></table></figure>
+<p>原理：</p>
 </li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>成功！<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--th:text 将div里面的文本内容设置为 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:text</span>=<span class="string">"$&#123;hello&#125;"</span>&gt;</span>这是显示欢迎信息<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-3-Thymeleaf-语法规则"><a href="#2-3-Thymeleaf-语法规则" class="headerlink" title="2.3 Thymeleaf 语法规则"></a>2.3 Thymeleaf 语法规则</h4><ol>
-<li><p><strong>th：任意html属性</strong>；来替换原生属性的值：</p>
-<p><img src="/2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/002.png" alt="thymeleaf语法"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.messages"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MessageSourceAutoConfiguration</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Comma-separated list of basenames (essentially a fully-qualified classpath</span></span><br><span class="line"><span class="comment">	 * location), each following the ResourceBundle convention with relaxed support for</span></span><br><span class="line"><span class="comment">	 * slash based locations. If it doesn't contain a package qualifier (such as</span></span><br><span class="line"><span class="comment">	 * "org.mypackage"), it will be resolved from the classpath root.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String basename = <span class="string">"messages"</span>;  </span><br><span class="line">    <span class="comment">//我们的配置文件可以直接放在类路径下叫messages.properties；</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-3-使用Thymeleaf在页面获取国际化的值"><a href="#1-3-使用Thymeleaf在页面获取国际化的值" class="headerlink" title="1.3 使用Thymeleaf在页面获取国际化的值"></a>1.3 使用Thymeleaf在页面获取国际化的值</h4><p>使用<strong>#{…} ：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用#&#123;...&#125;获取国际化参数值</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-card-header"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;login.title&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"layui-icon layui-icon-engine"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>&amp;nbsp;&amp;nbsp;用户登录</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-4-实现超链接转换国际化"><a href="#1-4-实现超链接转换国际化" class="headerlink" title="1.4 实现超链接转换国际化"></a>1.4 实现超链接转换国际化</h4><ol>
+<li><p>页面上传入<strong>国家语言参数</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/login.html(lang=zh_CN)&#125;"</span>&gt;</span>中文<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/login.html(lang=en_US)&#125;"</span>&gt;</span>English<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>表达式</strong></p>
-<p>① <strong>${…}</strong>：获取变量值；OGNL</p>
-<ul>
-<li><p>获取对象的属性、调用方法</p>
+<li><p>编写自定义国际化组件，<strong>并将组件添加到容器</strong></p>
+<p>① 自定义国际化组件（实现LocaleResolver接口）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyLocaleResolver</span> <span class="keyword">implements</span> <span class="title">LocaleResolver</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Locale <span class="title">resolveLocale</span><span class="params">(HttpServletRequest httpServletRequest)</span> </span>&#123;</span><br><span class="line">        String lang = httpServletRequest.getParameter(<span class="string">"lang"</span>);</span><br><span class="line"><span class="comment">//        System.out.println(lang);</span></span><br><span class="line">        <span class="comment">//若没有传入参数，则使用默认的</span></span><br><span class="line">        Locale locale = Locale.getDefault();</span><br><span class="line">        <span class="keyword">if</span>(!StringUtils.isEmpty(lang))&#123;</span><br><span class="line">            String[] langs = lang.split(<span class="string">"_"</span>);</span><br><span class="line">            locale = <span class="keyword">new</span> Locale(langs[<span class="number">0</span>], langs[<span class="number">1</span>]);</span><br><span class="line"><span class="comment">//            System.out.println(langs[0] + langs[1]);</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> locale;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLocale</span><span class="params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Locale locale)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>② 将组件添加到容器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyConfiguration</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加国际化解析组件</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> LocaleResolver <span class="title">localeResolver</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyLocaleResolver();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>使用内置的基本对象</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#ctx : the context object.</span><br><span class="line">#vars: the context variables.</span><br><span class="line">#locale : the context locale.</span><br><span class="line">#request : (only in Web Contexts) the HttpServletRequest object.</span><br><span class="line">#response : (only in Web Contexts) the HttpServletResponse object.</span><br><span class="line">#session : (only in Web Contexts) the HttpSession object.</span><br><span class="line">#servletContext : (only in Web Contexts) the ServletContext object.</span><br><span class="line"></span><br><span class="line">如：$&#123;session.foo&#125;</span><br></pre></td></tr></table></figure>
+</ol>
+<h3 id="2-拦截器（以登陆检查为例）"><a href="#2-拦截器（以登陆检查为例）" class="headerlink" title="2 拦截器（以登陆检查为例）"></a>2 拦截器（以登陆检查为例）</h3><h4 id="2-1-编写拦截器组件"><a href="#2-1-编写拦截器组件" class="headerlink" title="2.1 编写拦截器组件"></a>2.1 编写拦截器组件</h4><p>自定义拦截器类实现<strong>HandlerInterceptor</strong>接口即可：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginHandlerInterceptor</span> <span class="keyword">implements</span> <span class="title">HandlerInterceptor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        Object user = request.getSession().getAttribute(<span class="string">"loginUser"</span>);</span><br><span class="line">        <span class="keyword">if</span>(user == <span class="keyword">null</span>)&#123;</span><br><span class="line">            request.setAttribute(<span class="string">"msg"</span>,<span class="string">"没有权限请先登陆"</span>);</span><br><span class="line">            request.getRequestDispatcher(<span class="string">"/index.html"</span>).forward(request,response);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-将组件添加到容器"><a href="#2-2-将组件添加到容器" class="headerlink" title="2.2 将组件添加到容器"></a>2.2 将组件添加到容器</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyConfiguration</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addViewControllers</span><span class="params">(ViewControllerRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//super.addViewControllers(registry);</span></span><br><span class="line">        <span class="comment">//将某个请求映射到某个页面，但是不会经过Controller</span></span><br><span class="line">        registry.addViewController(<span class="string">"/"</span>).setViewName(<span class="string">"/login"</span>);</span><br><span class="line">        registry.addViewController(<span class="string">"/index.html"</span>).setViewName(<span class="string">"/login"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;</span><br><span class="line">      <span class="comment">//访问登录页不拦截，登录时的URI不拦截</span></span><br><span class="line">        registry.addInterceptor(<span class="keyword">new</span> LoginHandlerInterceptor()).addPathPatterns(<span class="string">"/**"</span>).excludePathPatterns(<span class="string">"/"</span>,<span class="string">"/index.html"</span>,<span class="string">"/user/login"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：启用自定义登录拦截器后往往无法访问静态资源，这是因为Spring Boot自动配置的静态资源映射默认为“/**”，而我们编写的登录拦截器需要拦截除少数页面的所有页面（如上述代码所示），因此我们需要修改静态资源映射路径，并在登录拦截器中排除。</p>
+<p>解决：</p>
+<ol>
+<li><p>在application.properties中修改静态资源映射路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.mvc.static-path-pattern= /static/**</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>使用内置的一些工具对象</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#execInfo : information about the template being processed.</span><br><span class="line">#messages : methods for obtaining externalized messages inside variables expressions, in the same way as they would be obtained using #&#123;…&#125; syntax.</span><br><span class="line">#uris : methods for escaping parts of URLs/URIs</span><br><span class="line">#conversions : methods for executing the configured conversion service (if any).</span><br><span class="line">#dates : methods for java.util.Date objects: formatting, component extraction, etc.</span><br><span class="line">#calendars : analogous to #dates , but for java.util.Calendar objects.</span><br><span class="line">#numbers : methods for formatting numeric objects.</span><br><span class="line">#strings : methods for String objects: contains, startsWith, prepending/appending, etc.</span><br><span class="line">#objects : methods for objects in general.</span><br><span class="line">#bools : methods for boolean evaluation.</span><br><span class="line">#arrays : methods for arrays.</span><br><span class="line">#lists : methods for lists.</span><br><span class="line">#sets : methods for sets.</span><br><span class="line">#maps : methods for maps.</span><br><span class="line">#aggregates : methods for creating aggregates on arrays or collections.</span><br><span class="line">#ids : methods for dealing with id attributes that might be repeated (for example, as a result of an iteration).</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>② <strong>*{…}</strong>：选择表达式：和<strong>${…}</strong>在功能上是一样</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">补充：配合 th:object="$&#123;session.user&#125;：</span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:object</span>=<span class="string">"$&#123;session.user&#125;"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>Name: <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"*&#123;firstName&#125;"</span>&gt;</span>Sebastian<span class="tag">&lt;/<span class="name">span</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>Surname: <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"*&#123;lastName&#125;"</span>&gt;</span>Pepper<span class="tag">&lt;/<span class="name">span</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>Nationality: <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"*&#123;nationality&#125;"</span>&gt;</span>Saturn<span class="tag">&lt;/<span class="name">span</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>③ <strong>#{…}</strong>：获取国际化内容</p>
-<p>④ <strong>@{…}</strong>：定义URL</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@&#123;/order/process(execId=$&#123;execId&#125;,execType='FAST')&#125;</span><br></pre></td></tr></table></figure>
-<p>⑤ <strong>~{…}</strong>：片段引用表达式</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:insert</span>=<span class="string">"~&#123;commons :: main&#125;"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>⑥ 其他：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">Literals（字面量）</span></span><br><span class="line">      <span class="string">Text</span> <span class="attr">literals:</span> <span class="string">'one text'</span> <span class="string">,</span> <span class="string">'Another one!'</span> <span class="string">,…</span></span><br><span class="line">      <span class="string">Number</span> <span class="attr">literals:</span> <span class="number">0</span> <span class="string">,</span> <span class="number">34</span> <span class="string">,</span> <span class="number">3.0</span> <span class="string">,</span> <span class="number">12.3</span> <span class="string">,…</span></span><br><span class="line">      <span class="string">Boolean</span> <span class="attr">literals:</span> <span class="literal">true</span> <span class="string">,</span> <span class="literal">false</span></span><br><span class="line">      <span class="literal">Null</span> <span class="attr">literal:</span> <span class="literal">null</span></span><br><span class="line">      <span class="string">Literal</span> <span class="attr">tokens:</span> <span class="string">one</span> <span class="string">,</span> <span class="string">sometext</span> <span class="string">,</span> <span class="string">main</span> <span class="string">,…</span></span><br><span class="line"><span class="string">Text</span> <span class="attr">operations:（文本操作）</span></span><br><span class="line">    <span class="string">String</span> <span class="attr">concatenation:</span> <span class="string">+</span></span><br><span class="line">    <span class="string">Literal</span> <span class="attr">substitutions:</span> <span class="string">|The</span> <span class="string">name</span> <span class="string">is</span> <span class="string">$&#123;name&#125;|</span></span><br><span class="line"><span class="string">Arithmetic</span> <span class="attr">operations:（数学运算）</span></span><br><span class="line">    <span class="string">Binary</span> <span class="attr">operators:</span> <span class="string">+</span> <span class="string">,</span> <span class="bullet">-</span> <span class="string">,</span> <span class="string">*</span> <span class="string">,</span> <span class="string">/</span> <span class="string">,</span> <span class="string">%</span></span><br><span class="line">    <span class="string">Minus</span> <span class="string">sign</span> <span class="string">(unary</span> <span class="string">operator):</span> <span class="bullet">-</span></span><br><span class="line"><span class="string">Boolean</span> <span class="attr">operations:（布尔运算）</span></span><br><span class="line">    <span class="string">Binary</span> <span class="attr">operators:</span> <span class="string">and</span> <span class="string">,</span> <span class="string">or</span></span><br><span class="line">    <span class="string">Boolean</span> <span class="string">negation</span> <span class="string">(unary</span> <span class="string">operator):</span> <span class="string">!</span> <span class="string">,</span> <span class="string">not</span></span><br><span class="line"><span class="string">Comparisons</span> <span class="string">and</span> <span class="attr">equality:（比较运算）</span></span><br><span class="line"><span class="attr">    Comparators:</span> <span class="string">&gt; , &lt; , &gt;= , &lt;= ( gt , lt , ge , le )</span></span><br><span class="line"><span class="string">    Equality operators: == , != ( eq , ne )</span></span><br><span class="line"><span class="string">Conditional operators:条件运算（三元运算符）</span></span><br><span class="line"><span class="string"></span><span class="attr">    If-then:</span> <span class="string">(if)</span> <span class="string">?</span> <span class="string">(then)</span></span><br><span class="line"><span class="attr">    If-then-else:</span> <span class="string">(if)</span> <span class="string">?</span> <span class="string">(then)</span> <span class="string">:</span> <span class="string">(else)</span></span><br><span class="line"><span class="attr">    Default:</span> <span class="string">(value)</span> <span class="string">?:</span> <span class="string">(defaultvalue)</span></span><br><span class="line"><span class="string">Special</span> <span class="attr">tokens:</span></span><br><span class="line"><span class="attr">    No-Operation:</span> <span class="string">_</span></span><br></pre></td></tr></table></figure>
-<p>更多详细用法参见：<a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.pdf" target="_blank" rel="noopener">官方文档</a>。</p>
-<p>为方便查看，这里笔者提供一个<a href="https://pan.baidu.com/s/1Ol_2WbjIF8sS5a1q6Ch84Q" target="_blank" rel="noopener">中文翻译文档</a>， 提取码：jjf8 。</p>
-</li>
+<li><p>在登录拦截器中排除掉静态资源映射路径</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;</span><br><span class="line">    registry.addInterceptor(<span class="keyword">new</span> LoginHandlerInterceptor()).addPathPatterns(<span class="string">"/**"</span>).excludePathPatterns(<span class="string">"/"</span>,<span class="string">"/index.html"</span>,<span class="string">"/user/login"</span>,<span class="string">"/static/**"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -681,12 +677,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/">Spring Boot系列（三）：Thymeleaf的使用</a></p>
+  <p><span>本文标题:</span><a href="/2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/">Spring Boot系列（五）：Web开发之国际化与拦截器</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 ShareHao 的个人博客">ShareHao</a></p>
-  <p><span>发布时间:</span>2018年11月15日 - 22:11</p>
-  <p><span>最后更新:</span>2018年11月15日 - 23:11</p>
-  <p><span>原始链接:</span><a href="/2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/" title="Spring Boot系列（三）：Thymeleaf的使用">http://yoursite.com/2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/" aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2018年11月16日 - 23:11</p>
+  <p><span>最后更新:</span>2018年11月16日 - 23:11</p>
+  <p><span>原始链接:</span><a href="/2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/" title="Spring Boot系列（五）：Web开发之国际化与拦截器">http://yoursite.com/2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -724,8 +720,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/15/2018-11-15-Spring-Boot系列（二）：集成日志框架/" rel="next" title="Spring Boot系列（二）：集成日志框架">
-                <i class="fa fa-chevron-left"></i> Spring Boot系列（二）：集成日志框架
+              <a href="/2018/11/16/2018-11-16-Spring-Boot系列（四）：Web开发之基础入门/" rel="next" title="Spring Boot系列（四）：Web开发之基础入门">
+                <i class="fa fa-chevron-left"></i> Spring Boot系列（四）：Web开发之基础入门
               </a>
             
           </div>
@@ -733,10 +729,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/16/2018-11-16-Spring-Boot系列（四）：Web开发之基础入门/" rel="prev" title="Spring Boot系列（四）：Web开发之基础入门">
-                Spring Boot系列（四）：Web开发之基础入门 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -905,7 +897,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot系列（三）：Thymeleaf的使用"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot系列（三）：Thymeleaf的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-关于模板引擎"><span class="nav-number">1.1.</span> <span class="nav-text">1 关于模板引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-关于Thymeleaf"><span class="nav-number">1.2.</span> <span class="nav-text">2 关于Thymeleaf</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-引入Thymeleaf"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 引入Thymeleaf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-Thymeleaf-的使用"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Thymeleaf 的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-Thymeleaf-语法规则"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 Thymeleaf 语法规则</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot系列（五）：Web开发之国际化与拦截器"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot系列（五）：Web开发之国际化与拦截器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-国际化"><span class="nav-number">1.1.</span> <span class="nav-text">1 国际化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-一般开发步骤"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 一般开发步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-编写国际化配置文件"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 编写国际化配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-使用Thymeleaf在页面获取国际化的值"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 使用Thymeleaf在页面获取国际化的值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-实现超链接转换国际化"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 实现超链接转换国际化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-拦截器（以登陆检查为例）"><span class="nav-number">1.2.</span> <span class="nav-text">2 拦截器（以登陆检查为例）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-编写拦截器组件"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 编写拦截器组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-将组件添加到容器"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 将组件添加到容器</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1107,9 +1099,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/';
-        this.page.identifier = '2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/';
-        this.page.title = 'Spring Boot系列（三）：Thymeleaf的使用';
+        this.page.url = 'http://yoursite.com/2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/';
+        this.page.identifier = '2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/';
+        this.page.title = 'Spring Boot系列（五）：Web开发之国际化与拦截器';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
