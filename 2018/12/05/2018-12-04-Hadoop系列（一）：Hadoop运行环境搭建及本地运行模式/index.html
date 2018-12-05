@@ -135,14 +135,14 @@
 
 
   <meta name="description" content="Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式1 Hadoop运行环境搭建1.1 准备虚拟机运行环境 克隆虚拟机 修改克隆虚拟机的静态IP及主机名 关闭防火墙（让外网可以访问） 创建一个用户（如sharehao），并配置其拥有root权限  1.2 安装JDK（1.7以上） 查询JDK版本 1$ rpm -qa | grep java  若JDK版本低于1.7，则卸载： 1$ su">
-<meta name="keywords" content="hadoop">
+<meta name="keywords" content="hadoop,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式">
 <meta property="og:url" content="http://yoursite.com/2018/12/05/2018-12-04-Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式/index.html">
 <meta property="og:site_name" content="ShareHao">
 <meta property="og:description" content="Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式1 Hadoop运行环境搭建1.1 准备虚拟机运行环境 克隆虚拟机 修改克隆虚拟机的静态IP及主机名 关闭防火墙（让外网可以访问） 创建一个用户（如sharehao），并配置其拥有root权限  1.2 安装JDK（1.7以上） 查询JDK版本 1$ rpm -qa | grep java  若JDK版本低于1.7，则卸载： 1$ su">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-05T02:44:52.944Z">
+<meta property="og:updated_time" content="2018-12-05T13:22:29.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式">
 <meta name="twitter:description" content="Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式1 Hadoop运行环境搭建1.1 准备虚拟机运行环境 克隆虚拟机 修改克隆虚拟机的静态IP及主机名 关闭防火墙（让外网可以访问） 创建一个用户（如sharehao），并配置其拥有root权限  1.2 安装JDK（1.7以上） 查询JDK版本 1$ rpm -qa | grep java  若JDK版本低于1.7，则卸载： 1$ su">
@@ -472,7 +472,7 @@
                 
               
 
-              <time title="创建时间：2018-12-05 10:42:00 / 修改时间：10:44:52" itemprop="dateCreated datePublished" datetime="2018-12-05T10:42:00+08:00">2018-12-05</time>
+              <time title="创建时间：2018-12-05 10:42:00 / 修改时间：21:22:29" itemprop="dateCreated datePublished" datetime="2018-12-05T10:42:00+08:00">2018-12-05</time>
             
 
             
@@ -524,7 +524,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  602 字
+                  1,004 字
                 </span>
               
 
@@ -540,7 +540,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -647,6 +647,12 @@
 <li>查看结果</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cat wcoutput/part-r-00000</span><br></pre></td></tr></table></figure>
+<h3 id="3-关于Linux操作防火墙的相关命令"><a href="#3-关于Linux操作防火墙的相关命令" class="headerlink" title="3 关于Linux操作防火墙的相关命令"></a>3 关于Linux操作防火墙的相关命令</h3><h4 id="3-1-firewalld的基本使用"><a href="#3-1-firewalld的基本使用" class="headerlink" title="3.1 firewalld的基本使用"></a>3.1 firewalld的基本使用</h4><p>CentOS7使用systemctl替换了service和chkconfig</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">启动： systemctl start firewalld</span><br><span class="line">关闭： systemctl stop firewalld</span><br><span class="line">查看状态： systemctl status firewalld </span><br><span class="line">开机禁用  ： systemctl disable firewalld</span><br><span class="line">开机启用  ： systemctl enable firewalld</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-使用systemctl做服务管理"><a href="#3-2-使用systemctl做服务管理" class="headerlink" title="3.2  使用systemctl做服务管理"></a>3.2  使用systemctl做服务管理</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">启动一个服务：systemctl start firewalld.service</span><br><span class="line">关闭一个服务：systemctl stop firewalld.service</span><br><span class="line">重启一个服务：systemctl restart firewalld.service</span><br><span class="line">显示一个服务的状态：systemctl status firewalld.service</span><br><span class="line">在开机时启用一个服务：systemctl enable firewalld.service</span><br><span class="line">在开机时禁用一个服务：systemctl disable firewalld.service</span><br><span class="line">查看服务是否开机启动：systemctl is-enabled firewalld.service</span><br><span class="line">查看已启动的服务列表：systemctl list-unit-files|grep enabled</span><br><span class="line">查看启动失败的服务列表：systemctl --failed</span><br></pre></td></tr></table></figure>
+<h4 id="3-3-配置firewalld-cmd"><a href="#3-3-配置firewalld-cmd" class="headerlink" title="3.3  配置firewalld-cmd"></a>3.3  配置firewalld-cmd</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">查看版本： firewall-cmd --version</span><br><span class="line">查看帮助： firewall-cmd --help</span><br><span class="line">显示状态： firewall-cmd --state</span><br><span class="line">查看所有打开的端口： firewall-cmd --zone=public --list-ports</span><br><span class="line">更新防火墙规则： firewall-cmd --reload</span><br><span class="line">查看区域信息:  firewall-cmd --get-active-zones</span><br><span class="line">查看指定接口所属区域： firewall-cmd --get-zone-of-interface=eth0</span><br><span class="line">拒绝所有包：firewall-cmd --panic-on</span><br><span class="line">取消拒绝状态： firewall-cmd --panic-off</span><br><span class="line">查看是否拒绝： firewall-cmd --query-panic</span><br></pre></td></tr></table></figure>
+<h4 id="3-4-防火墙开放端口"><a href="#3-4-防火墙开放端口" class="headerlink" title="3.4 防火墙开放端口"></a>3.4 防火墙开放端口</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">添加：firewall-cmd --zone=public --add-port=80/tcp --permanent    （--permanent永久生效，没有此参数重启后失效）</span><br><span class="line">重新载入：firewall-cmd --reload</span><br><span class="line">查看：firewall-cmd --zone= public --query-port=80/tcp</span><br><span class="line">删除：firewall-cmd --zone= public --remove-port=80/tcp --permanent</span><br></pre></td></tr></table></figure>
+<p> 参考资料：<a href="https://www.cnblogs.com/moxiaoan/p/5683743.html" target="_blank" rel="noopener">CentOS7使用firewalld打开关闭防火墙与端口</a></p>
 
       
     </div>
@@ -717,7 +723,7 @@
   <p><span>本文标题:</span><a href="/2018/12/05/2018-12-04-Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式/">Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 ShareHao 的个人博客">ShareHao</a></p>
   <p><span>发布时间:</span>2018年12月05日 - 10:12</p>
-  <p><span>最后更新:</span>2018年12月05日 - 10:12</p>
+  <p><span>最后更新:</span>2018年12月05日 - 21:12</p>
   <p><span>原始链接:</span><a href="/2018/12/05/2018-12-04-Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式/" title="Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式">http://yoursite.com/2018/12/05/2018-12-04-Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2018/12/05/2018-12-04-Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式/" aria-label="复制成功！"></i></span>
   </p>
@@ -745,6 +751,8 @@
         <div class="post-tags">
           
             <a href="/tags/hadoop/" rel="tag"># hadoop</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
           
         </div>
       
@@ -869,7 +877,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -940,7 +950,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式"><span class="nav-number">1.</span> <span class="nav-text">Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Hadoop运行环境搭建"><span class="nav-number">1.1.</span> <span class="nav-text">1 Hadoop运行环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-准备虚拟机运行环境"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 准备虚拟机运行环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-安装JDK（1-7以上）"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 安装JDK（1.7以上）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-安装Hadoop"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 安装Hadoop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-Hadoop目录结构"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 Hadoop目录结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-本地运行模式"><span class="nav-number">1.2.</span> <span class="nav-text">2 本地运行模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-官方Grep案例"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 官方Grep案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-官方WordCount案例"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 官方WordCount案例</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式"><span class="nav-number">1.</span> <span class="nav-text">Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Hadoop运行环境搭建"><span class="nav-number">1.1.</span> <span class="nav-text">1 Hadoop运行环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-准备虚拟机运行环境"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 准备虚拟机运行环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-安装JDK（1-7以上）"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 安装JDK（1.7以上）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-安装Hadoop"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 安装Hadoop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-Hadoop目录结构"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 Hadoop目录结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-本地运行模式"><span class="nav-number">1.2.</span> <span class="nav-text">2 本地运行模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-官方Grep案例"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 官方Grep案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-官方WordCount案例"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 官方WordCount案例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-关于Linux操作防火墙的相关命令"><span class="nav-number">1.3.</span> <span class="nav-text">3 关于Linux操作防火墙的相关命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-firewalld的基本使用"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 firewalld的基本使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-使用systemctl做服务管理"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2  使用systemctl做服务管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-配置firewalld-cmd"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3  配置firewalld-cmd</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-防火墙开放端口"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 防火墙开放端口</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
