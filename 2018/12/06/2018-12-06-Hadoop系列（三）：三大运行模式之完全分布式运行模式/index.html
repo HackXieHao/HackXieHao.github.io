@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<!--设置阅读文章需要密码效果-->
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/ico.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Hadoop系列（三）：三大运行模式之完全分布式运行模式1 虚拟机准备准备3台虚拟机，修改静态IP及主机名，并关闭防火墙。 2 环境配置2.1  scp（secure copy）安全拷贝 定义：scp可实现服务器与服务器之间的拷贝。  基本语法如下： 12345$ scp -r $pdir/$fname $user@hadoop$host:$pdir/$fname解释：	-r ：递归	$pdir/">
+<meta name="keywords" content="hadoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop系列（三）：三大运行模式之完全分布式运行模式">
+<meta property="og:url" content="http://yoursite.com/2018/12/06/2018-12-06-Hadoop系列（三）：三大运行模式之完全分布式运行模式/index.html">
+<meta property="og:site_name" content="ShareHao">
+<meta property="og:description" content="Hadoop系列（三）：三大运行模式之完全分布式运行模式1 虚拟机准备准备3台虚拟机，修改静态IP及主机名，并关闭防火墙。 2 环境配置2.1  scp（secure copy）安全拷贝 定义：scp可实现服务器与服务器之间的拷贝。  基本语法如下： 12345$ scp -r $pdir/$fname $user@hadoop$host:$pdir/$fname解释：	-r ：递归	$pdir/">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2018/12/06/2018-12-06-Hadoop系列（三）：三大运行模式之完全分布式运行模式/001.png">
+<meta property="og:updated_time" content="2018-12-06T15:09:12.531Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hadoop系列（三）：三大运行模式之完全分布式运行模式">
+<meta name="twitter:description" content="Hadoop系列（三）：三大运行模式之完全分布式运行模式1 虚拟机准备准备3台虚拟机，修改静态IP及主机名，并关闭防火墙。 2 环境配置2.1  scp（secure copy）安全拷贝 定义：scp可实现服务器与服务器之间的拷贝。  基本语法如下： 12345$ scp -r $pdir/$fname $user@hadoop$host:$pdir/$fname解释：	-r ：递归	$pdir/">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/06/2018-12-06-Hadoop系列（三）：三大运行模式之完全分布式运行模式/001.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ShareHao" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/06/2018-12-06-Hadoop系列（三）：三大运行模式之完全分布式运行模式/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Hadoop系列（三）：三大运行模式之完全分布式运行模式 | ShareHao</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ShareHao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Just try!</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tech">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tech/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>技术</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-life">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/life/" rel="section"><i class="menu-item-icon fa fa-fw fa-edit"></i> <br>生活</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/06/2018-12-06-Hadoop系列（三）：三大运行模式之完全分布式运行模式/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShareHao">
+      <meta itemprop="description" content="欲速则不达">
+      <meta itemprop="image" content="/images/sharehao.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShareHao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hadoop系列（三）：三大运行模式之完全分布式运行模式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-06 23:02:07 / 修改时间：23:09:12" itemprop="dateCreated datePublished" datetime="2018-12-06T23:02:07+08:00">2018-12-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/06/2018-12-06-Hadoop系列（三）：三大运行模式之完全分布式运行模式/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/06/2018-12-06-Hadoop系列（三）：三大运行模式之完全分布式运行模式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,869 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Hadoop系列（三）：三大运行模式之完全分布式运行模式"><a href="#Hadoop系列（三）：三大运行模式之完全分布式运行模式" class="headerlink" title="Hadoop系列（三）：三大运行模式之完全分布式运行模式"></a>Hadoop系列（三）：三大运行模式之完全分布式运行模式</h2><h3 id="1-虚拟机准备"><a href="#1-虚拟机准备" class="headerlink" title="1 虚拟机准备"></a>1 虚拟机准备</h3><p>准备3台虚拟机，修改静态IP及主机名，并关闭防火墙。</p>
+<h3 id="2-环境配置"><a href="#2-环境配置" class="headerlink" title="2 环境配置"></a>2 环境配置</h3><h4 id="2-1-scp（secure-copy）安全拷贝"><a href="#2-1-scp（secure-copy）安全拷贝" class="headerlink" title="2.1  scp（secure copy）安全拷贝"></a>2.1  scp（secure copy）安全拷贝</h4><ol>
+<li><p>定义：scp可实现服务器与服务器之间的拷贝。</p>
+</li>
+<li><p>基本语法如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> scp -r $pdir/$fname $user@hadoop$host:$pdir/$fname</span><br><span class="line">解释：</span><br><span class="line">	-r ：递归</span><br><span class="line"><span class="meta">	$</span>pdir/$fname ：要拷贝的文件路径/名称</span><br><span class="line"><span class="meta">	$</span>user@hadoop$host:$pdir/$fname ：目的用户@主机:目的路径/名称</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将JDK及Hadoop等软件拷贝到三台服务器中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[sharehao@hadoop /]$ scp -r /opt  root@hadoop01:/opt</span><br><span class="line">[sharehao@hadoop /]$ scp -r /opt  root@hadoop02:/opt</span><br><span class="line">[sharehao@hadoop /]$ scp -r /opt  root@hadoop03:/opt</span><br></pre></td></tr></table></figure>
+<p><strong>注意：拷贝过来的/opt/module目录，别忘了在hadoop01、hadoop02、hadoop03上修改文件的所有者和所有者组。</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo chown sharehao:sharehao -R /opt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将环境变量配置文件拷贝到三台服务器中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[sharehao@hadoop ~]$ sudo scp /etc/profile root@hadoop01:/etc/profile</span><br><span class="line">[sharehao@hadoop ~]$ sudo scp /etc/profile root@hadoop02:/etc/profile</span><br><span class="line">[sharehao@hadoop ~]$ sudo scp /etc/profile root@hadoop03:/etc/profile</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="2-2-rsync-远程同步工具"><a href="#2-2-rsync-远程同步工具" class="headerlink" title="2.2 rsync 远程同步工具"></a>2.2 rsync 远程同步工具</h4><ol>
+<li><p>特点：rsync主要用于备份和镜像，具有速度快、避免复制相同内容和支持符号链接的优点。</p>
+</li>
+<li><p><strong>与scp的区别</strong>：rsync复制文件要比scp的速度快，<strong>rsync只对差异文件做更新，</strong>而scp是把所有文件都复制过去。</p>
+</li>
+<li><p>语法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rsync -rvl $pdir/$fname $user@hadoop$host:$pdir/$fname</span><br><span class="line">解释：</span><br><span class="line">	-r ：递归</span><br><span class="line">	-v ：显示复制过程</span><br><span class="line">	-l ：拷贝符号链接</span><br><span class="line"><span class="meta">	$</span>pdir/$fname ：要拷贝的文件路径/名称</span><br><span class="line"><span class="meta">	$</span>user@hadoop$host:$pdir/$fname ：目的用户@主机:目的路径/名称</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>案例演示：</p>
+<p>把hadoop服务器上的/opt/software目录同步到hadoop01服务器的root用户下的/opt/software目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[sharehao@hadoop opt]$ rsync -rvl /opt/software/ root@hadoop01:/opt/software</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="2-3-xsync-集群分发脚本"><a href="#2-3-xsync-集群分发脚本" class="headerlink" title="2.3 xsync 集群分发脚本"></a>2.3 xsync 集群分发脚本</h4><ol>
+<li><p>用途：<strong>将某个服务器上的文件复制到其他多台服务器上</strong></p>
+</li>
+<li><p>自己编写<strong>xsync.sh</strong>脚本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"><span class="meta">#</span>1 获取输入参数个数，如果没有参数，直接退出</span><br><span class="line">pcount=$#</span><br><span class="line">if((pcount==0)); then</span><br><span class="line">echo no args;</span><br><span class="line">exit;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>2 获取文件名称</span><br><span class="line">p1=$1</span><br><span class="line">fname=`basename $p1`</span><br><span class="line">echo fname=$fname</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>3 获取上级目录到绝对路径</span><br><span class="line">pdir=`cd -P $(dirname $p1); pwd`</span><br><span class="line">echo pdir=$pdir</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>4 获取当前用户名称</span><br><span class="line">user=`whoami`</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>5 循环</span><br><span class="line">for((host=103; host&lt;105; host++)); do</span><br><span class="line">        echo ------------------- hadoop$host --------------</span><br><span class="line">        rsync -rvl $pdir/$fname $user@hadoop$host:$pdir</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改脚本执行权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> chmod 777 xsync.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ./xsync.sh /opt/software</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="3-集群配置"><a href="#3-集群配置" class="headerlink" title="3 集群配置"></a>3 集群配置</h3><h4 id="3-1-集群部署规划"><a href="#3-1-集群部署规划" class="headerlink" title="3.1 集群部署规划"></a>3.1 集群部署规划</h4><table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">hadoop01</th>
+<th style="text-align:center">hadoop02</th>
+<th style="text-align:center">hadoop03</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">HDFS</td>
+<td style="text-align:center">NameNode  DataNode</td>
+<td style="text-align:center">DataNode</td>
+<td style="text-align:center">SecondaryNameNode  DataNode</td>
+</tr>
+<tr>
+<td style="text-align:center">YARN</td>
+<td style="text-align:center">NodeManager</td>
+<td style="text-align:center">ResourceManager  NodeManager</td>
+<td style="text-align:center">NodeManager</td>
+</tr>
+</tbody>
+</table>
+<p>说明：<strong>NameNode、SecondaryNameNode  以及 ResourceManager  不能在同一台服务器上。</strong></p>
+<h4 id="3-2-配置集群"><a href="#3-2-配置集群" class="headerlink" title="3.2 配置集群"></a>3.2 配置集群</h4><h5 id="3-2-1-配置core-site-xml"><a href="#3-2-1-配置core-site-xml" class="headerlink" title="3.2.1 配置core-site.xml"></a>3.2.1 配置core-site.xml</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定HDFS中NameNode的地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      	<span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://hadoop01:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定Hadoop运行时产生文件的存储目录 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/hadoop-2.7.2/data/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="3-2-2-配置HDFS配置文件"><a href="#3-2-2-配置HDFS配置文件" class="headerlink" title="3.2.2 配置HDFS配置文件"></a>3.2.2 配置HDFS配置文件</h5><ol>
+<li><p><strong>hdfs-env.sh</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1.8.0_191</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>hdfs-site.xm</strong>l</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>3<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定Hadoop辅助名称节点主机配置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.secondary.http-address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop03:50090<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="3-2-3-YARN配置文件"><a href="#3-2-3-YARN配置文件" class="headerlink" title="3.2.3 YARN配置文件"></a>3.2.3 YARN配置文件</h5><ol>
+<li><p><strong>yarn-env.sh</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1.8.0_191</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>yarn-site.sh</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Reducer获取数据的方式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>mapreduce_shuffle<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定YARN的ResourceManager的地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.resourcemanager.hostname<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop02<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="3-2-4-MapReduce配置文件"><a href="#3-2-4-MapReduce配置文件" class="headerlink" title="3.2.4 MapReduce配置文件"></a>3.2.4 MapReduce配置文件</h5><ol>
+<li><p><strong>mapred-env.sh</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1.8.0_191</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>mapred-site.xml</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>重命名</span><br><span class="line"><span class="meta">$</span> cp mapred-site.xml.template mapred-site.xml</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#增加配置</span><br><span class="line"><span class="comment">&lt;!-- 指定MR运行在Yarn上 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.framework.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>yarn<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="3-2-5-使用xsync分发配置文件"><a href="#3-2-5-使用xsync分发配置文件" class="headerlink" title="3.2.5 使用xsync分发配置文件"></a>3.2.5 使用xsync分发配置文件</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ./xsync.sh /opt/hadoop-2.7.2/</span><br></pre></td></tr></table></figure>
+<h4 id="3-3-启动集群"><a href="#3-3-启动集群" class="headerlink" title="3.3 启动集群"></a>3.3 启动集群</h4><h5 id="3-3-1-单点启动"><a href="#3-3-1-单点启动" class="headerlink" title="3.3.1 单点启动"></a>3.3.1 单点启动</h5><ol>
+<li><p>若第一次启动集群，则先格式化NameNode</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[sharehao@hadoop01 hadoop-2.7.2]$ hadoop namenode -format</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在hadoop01上启动NameNode</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> hadoop-daemon.sh start namenode</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>三台服务器均启动DataNode</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> hadoop-daemon.sh start datanode</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在hadoop02上启动ResourceManager</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> yarn-daemon.sh start resourcemanager</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>三台服务器均启动NodeManager</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> yarn-daemon.sh start nodemanager</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在hadoop03上启动SecondaryNameNode </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> hadoop-daemon.sh start secondarynamenode</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="3-3-2-群点启动"><a href="#3-3-2-群点启动" class="headerlink" title="3.3.2 群点启动"></a>3.3.2 群点启动</h5><ol>
+<li><p>配置 slaves 文件</p>
+<p>可以让DataNode、NodeManager一起在配置的服务器上启动。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>增添内容</span><br><span class="line">hadoop01</span><br><span class="line">hadoop02</span><br><span class="line">hadoop03</span><br></pre></td></tr></table></figure>
+<p><strong>注意：该文件中添加的内容结尾不允许有空格，文件中不允许有空行。</strong></p>
+</li>
+<li><p>同步所有节点配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ./xsync.sh slaves</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动集群</p>
+<p>（1）若第一次启动集群，则需要格式化NameNode（格式化之前，一定要先停止上次启动的所有namenode和datanode进程，然后再删除data和logs数据）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> bin/hdfs namenode -format</span><br></pre></td></tr></table></figure>
+<p>（2）启动HDFS</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sbin/start-dfs.sh</span><br></pre></td></tr></table></figure>
+<p>（3）启动YARN<strong>（注：NameNode和ResourceManger如果不是同一台机器，不能在NameNode上启动 YARN，应该在ResouceManager所在的机器上启动YARN）</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sbin/start-yarn.sh</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="4-SSH无密登录配置"><a href="#4-SSH无密登录配置" class="headerlink" title="4 SSH无密登录配置"></a>4 SSH无密登录配置</h3><h4 id="4-1-实现原理"><a href="#4-1-实现原理" class="headerlink" title="4.1 实现原理"></a>4.1 实现原理</h4><p><img src="/2018/12/06/2018-12-06-Hadoop系列（三）：三大运行模式之完全分布式运行模式/001.png" alt="SSH无密登录实现原理图"></p>
+<h4 id="4-2-实操"><a href="#4-2-实操" class="headerlink" title="4.2 实操"></a>4.2 实操</h4><ol>
+<li><p>配置SSH</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh ip地址</span><br></pre></td></tr></table></figure>
+<p>若连接出现Host key verification failed错误，直接输入yes即可。</p>
+</li>
+<li><p>ssh-key-gen生成公钥和私钥</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>敲三次回车即可。</p>
+</li>
+<li><p>将公钥拷贝到要免密登录的目标服务器上</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[sharehao@hadoop .ssh]$ ssh-copy-id hadoop01</span><br><span class="line">[sharehao@hadoop .ssh]$ ssh-copy-id hadoop02</span><br><span class="line">[sharehao@hadoop .ssh]$ ssh-copy-id hadoop03</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<p>（1）需要在hadoop01上采用root账号，配置无密登录到hadoop01、hadoop02、hadoop03；</p>
+<p>（2）需要在hadoop02上采用sharehao账号，配置无密登录到hadoop01、hadoop02、hadoop03。</p>
+</li>
+</ol>
+<h4 id="4-3-ssh文件夹下（-ssh）的文件功能解释"><a href="#4-3-ssh文件夹下（-ssh）的文件功能解释" class="headerlink" title="4.3 .ssh文件夹下（~/.ssh）的文件功能解释"></a>4.3 .ssh文件夹下（~/.ssh）的文件功能解释</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">known_hosts</th>
+<th style="text-align:center">记录ssh访问过计算机的公钥(public  key)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">id_rsa</td>
+<td style="text-align:center">生成的私钥</td>
+</tr>
+<tr>
+<td style="text-align:center">id_rsa.pub</td>
+<td style="text-align:center">生成的公钥</td>
+</tr>
+<tr>
+<td style="text-align:center">authorized_keys</td>
+<td style="text-align:center">存放授权过得无密登录服务器公钥</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-集群时间同步"><a href="#5-集群时间同步" class="headerlink" title="5 集群时间同步"></a>5 集群时间同步</h3><h4 id="5-1-基准服务器配置"><a href="#5-1-基准服务器配置" class="headerlink" title="5.1 基准服务器配置"></a>5.1 基准服务器配置</h4><p><strong>注：必须使用root用户</strong></p>
+<ol>
+<li><p>检查ntp是否安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rpm -qa|grep ntp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改ntp配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> vi /etc/ntp.conf</span><br></pre></td></tr></table></figure>
+<p>（1）授权192.168.222.0-192.168.222.255网段上的所有机器可以从这台机器上查询和同步时间</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap</span><br><span class="line">修改为：</span><br><span class="line">restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap</span><br></pre></td></tr></table></figure>
+<p>（2）配置集群在局域网中，不使用其他互联网上的时间</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server 0.centos.pool.ntp.org iburst</span><br><span class="line">server 1.centos.pool.ntp.org iburst</span><br><span class="line">server 2.centos.pool.ntp.org iburst</span><br><span class="line">server 3.centos.pool.ntp.org iburst</span><br><span class="line">修改为：</span><br><span class="line"><span class="meta">#</span>server 0.centos.pool.ntp.org iburst</span><br><span class="line"><span class="meta">#</span>server 1.centos.pool.ntp.org iburst</span><br><span class="line"><span class="meta">#</span>server 2.centos.pool.ntp.org iburst</span><br><span class="line"><span class="meta">#</span>server 3.centos.pool.ntp.org iburst</span><br></pre></td></tr></table></figure>
+<p>（3）当该节点丢失网络连接，依然可以采用本地时间作为时间服务器为集群中的其他节点提供时间同步</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">添加以下内容：</span><br><span class="line">server 127.127.1.0</span><br><span class="line">fudge 127.127.1.0 stratum 10</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改/etc/sysconfig/ntpd 文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> vim /etc/sysconfig/ntpd</span><br><span class="line"></span><br><span class="line">增加以下内容：（让硬件时间与系统时间一起同步）</span><br><span class="line">SYNC_HWCLOCK=yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新启动ntpd服务，并设置其开机启动</p>
+</li>
+</ol>
+<h4 id="5-2-其他服务器配置"><a href="#5-2-其他服务器配置" class="headerlink" title="5.2 其他服务器配置"></a>5.2 其他服务器配置</h4><p><strong>注意：同样需要是root用户</strong></p>
+<p>配置每5分钟同步一次，使用crontab设置定时任务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> crontab -e</span><br></pre></td></tr></table></figure>
+<p>编写如下定时任务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*/5 * * * * /usr/sbin/ntpdate hadoop01</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.png" alt="ShareHao 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/ali_pay.jpg" alt="ShareHao 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:16px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/12/06/2018-12-06-Hadoop系列（三）：三大运行模式之完全分布式运行模式/">Hadoop系列（三）：三大运行模式之完全分布式运行模式</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 ShareHao 的个人博客">ShareHao</a></p>
+  <p><span>发布时间:</span>2018年12月06日 - 23:12</p>
+  <p><span>最后更新:</span>2018年12月06日 - 23:12</p>
+  <p><span>原始链接:</span><a href="/2018/12/06/2018-12-06-Hadoop系列（三）：三大运行模式之完全分布式运行模式/" title="Hadoop系列（三）：三大运行模式之完全分布式运行模式">http://yoursite.com/2018/12/06/2018-12-06-Hadoop系列（三）：三大运行模式之完全分布式运行模式/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2018/12/06/2018-12-06-Hadoop系列（三）：三大运行模式之完全分布式运行模式/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/05/2018-12-04-Hadoop系列（二）：三大运行模式之伪分布式运行模式/" rel="next" title="Hadoop系列（二）：三大运行模式之伪分布式运行模式">
+                <i class="fa fa-chevron-left"></i> Hadoop系列（二）：三大运行模式之伪分布式运行模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/sharehao.jpg" alt="ShareHao">
+            
+              <p class="site-author-name" itemprop="name">ShareHao</p>
+              <p class="site-description motion-element" itemprop="description">欲速则不达</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/HackXieHao" title="GitHub &rarr; https://github.com/HackXieHao" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="https://www.baidu.com/" rel="noopener" target="_blank">baidu</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop系列（三）：三大运行模式之完全分布式运行模式"><span class="nav-number">1.</span> <span class="nav-text">Hadoop系列（三）：三大运行模式之完全分布式运行模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-虚拟机准备"><span class="nav-number">1.1.</span> <span class="nav-text">1 虚拟机准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-环境配置"><span class="nav-number">1.2.</span> <span class="nav-text">2 环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-scp（secure-copy）安全拷贝"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1  scp（secure copy）安全拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-rsync-远程同步工具"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 rsync 远程同步工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-xsync-集群分发脚本"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 xsync 集群分发脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-集群配置"><span class="nav-number">1.3.</span> <span class="nav-text">3 集群配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-集群部署规划"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 集群部署规划</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-配置集群"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 配置集群</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-1-配置core-site-xml"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">3.2.1 配置core-site.xml</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-2-配置HDFS配置文件"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">3.2.2 配置HDFS配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-3-YARN配置文件"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">3.2.3 YARN配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-4-MapReduce配置文件"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">3.2.4 MapReduce配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-5-使用xsync分发配置文件"><span class="nav-number">1.3.2.5.</span> <span class="nav-text">3.2.5 使用xsync分发配置文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-启动集群"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 启动集群</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-1-单点启动"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">3.3.1 单点启动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-2-群点启动"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">3.3.2 群点启动</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-SSH无密登录配置"><span class="nav-number">1.4.</span> <span class="nav-text">4 SSH无密登录配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-实现原理"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 实现原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-实操"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 实操</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-ssh文件夹下（-ssh）的文件功能解释"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 .ssh文件夹下（~/.ssh）的文件功能解释</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-集群时间同步"><span class="nav-number">1.5.</span> <span class="nav-text">5 集群时间同步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-基准服务器配置"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 基准服务器配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-其他服务器配置"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 其他服务器配置</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ShareHao</span>
+
+  
+
+  
+</div>
+
+
+<!--
+  <div class="powered-by">
+    <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+      本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+  </div>
+-->
+  <!--
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  -->
+
+
+<!--
+
+  <span class="post-meta-divider">|</span>
+
+-->
+
+
+<!--
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.5.0</div>
+-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  <!--
+  
+
+  
+  -->
+  
+    <span class="site-uv">
+    <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    人
+    </span>
+  
+
+  
+    <span class="site-pv">
+    <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    次
+    </span>
+  
+
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2018/12/06/2018-12-06-Hadoop系列（三）：三大运行模式之完全分布式运行模式/';
+        this.page.identifier = '2018/12/06/2018-12-06-Hadoop系列（三）：三大运行模式之完全分布式运行模式/';
+        this.page.title = 'Hadoop系列（三）：三大运行模式之完全分布式运行模式';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'eeLPk8Sfvkxd4K9PnHmKEceH-gzGzoHsz',
+        appKey: 'CGzn4mLbSyeH47dqWSMfC6EQ',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+</body>
+</html>
