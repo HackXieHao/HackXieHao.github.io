@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<!--设置阅读文章需要密码效果-->
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/ico.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统1 推荐系统中的数据挖掘方法1.1 数据预处理1.1.1 相似度度量方法 欧几里得距离   d(x,y) = \sqrt{\sum_{k=1}^{n}{(x_k - y_k) ^ 2}}​    闵可夫斯基距离是欧几里得距离的推广：  d(x,y) = (\sum_{k=1}^{n}|x_k - y_k|^r)^\frac{1}{r}">
+<meta name="keywords" content="推荐系统,机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统">
+<meta property="og:url" content="http://yoursite.com/2018/12/27/2018-12-26-推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统/index.html">
+<meta property="og:site_name" content="ShareHao">
+<meta property="og:description" content="推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统1 推荐系统中的数据挖掘方法1.1 数据预处理1.1.1 相似度度量方法 欧几里得距离   d(x,y) = \sqrt{\sum_{k=1}^{n}{(x_k - y_k) ^ 2}}​    闵可夫斯基距离是欧几里得距离的推广：  d(x,y) = (\sum_{k=1}^{n}|x_k - y_k|^r)^\frac{1}{r}">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-28T01:08:26.932Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统">
+<meta name="twitter:description" content="推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统1 推荐系统中的数据挖掘方法1.1 数据预处理1.1.1 相似度度量方法 欧几里得距离   d(x,y) = \sqrt{\sum_{k=1}^{n}{(x_k - y_k) ^ 2}}​    闵可夫斯基距离是欧几里得距离的推广：  d(x,y) = (\sum_{k=1}^{n}|x_k - y_k|^r)^\frac{1}{r}">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ShareHao" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/27/2018-12-26-推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统 | ShareHao</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ShareHao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Just try!</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tech">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tech/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>技术</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-life">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/life/" rel="section"><i class="menu-item-icon fa fa-fw fa-edit"></i> <br>生活</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/27/2018-12-26-推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShareHao">
+      <meta itemprop="description" content="欲速则不达">
+      <meta itemprop="image" content="/images/sharehao.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShareHao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-27 23:15:49" itemprop="dateCreated datePublished" datetime="2018-12-27T23:15:49+08:00">2018-12-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-12-28 09:08:26" itemprop="dateModified" datetime="2018-12-28T09:08:26+08:00">2018-12-28</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/27/2018-12-26-推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/27/2018-12-26-推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,205 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统"><a href="#推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统" class="headerlink" title="推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统"></a>推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统</h2><h3 id="1-推荐系统中的数据挖掘方法"><a href="#1-推荐系统中的数据挖掘方法" class="headerlink" title="1 推荐系统中的数据挖掘方法"></a>1 推荐系统中的数据挖掘方法</h3><h4 id="1-1-数据预处理"><a href="#1-1-数据预处理" class="headerlink" title="1.1 数据预处理"></a>1.1 数据预处理</h4><h5 id="1-1-1-相似度度量方法"><a href="#1-1-1-相似度度量方法" class="headerlink" title="1.1.1 相似度度量方法"></a>1.1.1 相似度度量方法</h5><ol>
+<li><strong>欧几里得距离</strong></li>
+</ol>
+<script type="math/tex; mode=display">
+d(x,y) = \sqrt{\sum_{k=1}^{n}{(x_k - y_k) ^ 2}}</script><p>​    闵可夫斯基距离是欧几里得距离的推广：</p>
+<script type="math/tex; mode=display">
+d(x,y) = (\sum_{k=1}^{n}|x_k - y_k|^r)^\frac{1}{r}</script><p>​    r = 1，城市街区（曼哈顿、出租车、L1范数）距离；</p>
+<p>​    r = 2，欧几里得距离。</p>
+<ol>
+<li><p><strong>余弦值</strong></p>
+<script type="math/tex; mode=display">
+cos(x,y) = \frac{(x \cdot y)}{|x||y|}</script><p><strong>·</strong> 表示向量的点积，|x|表示向量x的长度。</p>
+</li>
+<li><p><strong>皮尔逊相关系数</strong></p>
+<script type="math/tex; mode=display">
+Peason(x,y) = \frac{\sum(x,y)}{\sigma_x * \sigma_y}</script></li>
+</ol>
+<p>推荐系统一般会使用<strong>余弦相似度或者皮尔逊相关性</strong>。Spertus在Orkut社交网络的环境中做了大规模的研究来评估六种不同的相似度度量方法，发现<strong>余弦相似度</strong>是其中效果最好的方法。Lathia同样做了相关研究，总结出在一般案例中，推荐系统的预测精准性不受相似度度量方法选择的影响，甚至使用<strong>随机的相似度度量方法</strong>有时会产生比使用众所周知的方法效果更好。</p>
+<h5 id="1-1-2-抽样"><a href="#1-1-2-抽样" class="headerlink" title="1.1.2 抽样"></a>1.1.2 抽样</h5><ol>
+<li>无取代抽样</li>
+<li>取代抽样</li>
+<li>分层抽样</li>
+</ol>
+<p>推荐系统中常用的方法是从用户中抽取可用的反馈以用户评分的形式来划分训练和测试。根据场景的不同，选择不同的抽样方法。</p>
+<h5 id="1-1-3-降维"><a href="#1-1-3-降维" class="headerlink" title="1.1.3 降维"></a>1.1.3 降维</h5><ol>
+<li><p>主成分分析法（PCA）</p>
+<p>PCA用来发现高维数据集中的模式，可以获得一组有序的成分列表，其根据最小平方误差计算出变化最大的值。列表中第一个成分所代表的变化量要比第二个成分所代表的变化量大，以此类推。我们可以通过忽略这些对变化贡献较小的成分实现降维。</p>
+<p>PCA的局限性：</p>
+<p>​    ①PCA依赖于以线性合并为基础的经验数据集，尽管一般的非线性PCA方法已经提出。</p>
+<p>​    ②PCA的原始数据集需要是从高斯分布中抽取出来的，否则无法保证主要成分的有效性。</p>
+</li>
+<li><p>奇异值分解（SVD）</p>
+<p>SVD是矩阵分解方法的特殊实现，和PCA相关。SVD分解中的关键问题是发现低维特征空间，这些新特征代表概念以及在集合内容中的每一个概念强度都是可计算的。</p>
+<script type="math/tex; mode=display">
+A_{n×m} = U_{n×r}\lambda_{r×r}V_{r×m}</script><p>数据A（n个物品，m个特征），矩阵U（n个物品，r个概念），对角矩阵R（概念的长度），矩阵V（m特征，r概念）</p>
+</li>
+<li><p>矩阵分解（MF）</p>
+</li>
+</ol>
+<h5 id="1-1-4-去噪"><a href="#1-1-4-去噪" class="headerlink" title="1.1.4 去噪"></a>1.1.4 去噪</h5><p>噪声：数据收集阶段收集到的一些可能影响数据分析和解释结果的伪造数据。分为自然的和恶意的噪声。恶意的噪声影响推荐的输出，可通过要求用户重新填写一些物品的评价来去噪，提高精确度。</p>
+<p>通过预处理步骤来提高精确度能够比复杂的算法优化效果好得多。</p>
+<h4 id="1-2-分类"><a href="#1-2-分类" class="headerlink" title="1.2 分类"></a>1.2 分类</h4><p>分类器是从特征空间到标签空间的映射，其中特种空间代表需要分类的元素的属性，标签代表类别。</p>
+<h5 id="1-2-1-最近邻KNN"><a href="#1-2-1-最近邻KNN" class="headerlink" title="1.2.1 最近邻KNN"></a>1.2.1 最近邻KNN</h5><p>基于样本的分类通过存储训练记录并使用它们来预测未知样本的标签分类。KNN是基于样本的分类。给出一个要分类的点，KNN分类器能够从训练记录中发现k个最近的点。</p>
+<p>KNN最关键的问题是k值的选择，若k太小，分类可能对噪声点太敏感；若k太大，近邻范围内可能会包含其他类太多的点。</p>
+<p>近邻算法是协同过滤（CF）最常用的一种方法，KNN不需要学习和维持一个给定的模型，系统能适应用户评分矩阵的急速变化，但这是以重新计算邻居和相似矩阵为代价的。</p>
+<h5 id="1-2-2-决策树"><a href="#1-2-2-决策树" class="headerlink" title="1.2.2 决策树"></a>1.2.2 决策树</h5><p>使用决策树建立分类器的优点：</p>
+<p>​    ①构建代价较小，且在分类未知对象方面速度较快</p>
+<p>​    ②与其他分类器相比，决策树在维持精度的同时，它产生的一系列规则容易被解释</p>
+<p>推荐系统中的决策树可以用在<strong>基于模型的方法</strong>里。一种可能是用内容特征建立决策树模型，对描述用户偏好的所有变量建模。</p>
+<p>决策树可以用来模拟系统的一个特殊部分，Cho等提出一个结合关联规则和决策树的在线购物推荐系统，决策树被用来<strong>作为一个过滤器来选择哪些用户可以作为推荐的目标</strong>。</p>
+<p>另一个使用决策树的选择是使用它们作为物品排序的工具。</p>
+<h5 id="1-2-3-基于规则的分类"><a href="#1-2-3-基于规则的分类" class="headerlink" title="1.2.3 基于规则的分类"></a>1.2.3 基于规则的分类</h5><p>基于规则的分类器是通过一组“if…then…”的规则集合划分数据。<strong>规则的前提或条件</strong>是属性连词的表达式。<strong>规则的结论</strong>是一个正或者负的分类。</p>
+<p><strong>覆盖性</strong>：如果对象的属性满足规则的条件，可以说规则R覆盖对象x。规则的覆盖性为满足前提的部分记录。</p>
+<p><strong>准确性</strong>：既满足前提有满足结论的部分记录。</p>
+<p><strong>互斥的规则</strong>：规则彼此间是独立的，如每一个记录最多被一个规则覆盖。</p>
+<p><strong>详尽规则</strong>：属性值的所有可能组合都被覆盖，如一个记录至少被一个规则覆盖。</p>
+<h5 id="1-2-4-贝叶斯分类器"><a href="#1-2-4-贝叶斯分类器" class="headerlink" title="1.2.4 贝叶斯分类器"></a>1.2.4 贝叶斯分类器</h5><p>贝叶斯分类器把每一个属性和类标签当作随机变量。假设属性的概率独立，则有：</p>
+<script type="math/tex; mode=display">
+P(A_1,A_2,...,A_N|C_k) = P(A_1|C_k)P(A_2|C_k)...P(A_N|C_k)</script><p>朴素贝叶斯的优点：</p>
+<p>​    ①受孤立噪声点和不相关的属性的影响小</p>
+<p>​    ②概率估算期间可以通过忽略实例来处理缺失值</p>
+<p>贝叶斯分类器常用于基于模型的推荐系统，被用来为基于内容的推荐系统生成模型。</p>
+<h5 id="1-2-5-人工神经网络ANN"><a href="#1-2-5-人工神经网络ANN" class="headerlink" title="1.2.5 人工神经网络ANN"></a>1.2.5 人工神经网络ANN</h5><p>ANN的主要优点是能够做非线性的分类任务（取决于激活函数），并且由于并行属性，它们高效甚至能够在部分网络受损的情况下操作。</p>
+<p>缺点是很难对给定的问题提供理想的拓扑结构，并且一旦拓扑结构确定后，它的表现水平就会位于分类错误率的下限。ANN是一种黑盒方法。</p>
+<p>ANN能够以类似于贝叶斯网络的方法用于构建基于模型的推荐系统，但是，没有令人信服的研究表明ANN是否能提高性能。</p>
+<p>ANN可以用来结合（或是混合）几个推荐模块或者数据源的输入。</p>
+<h5 id="1-2-6-支持向量机"><a href="#1-2-6-支持向量机" class="headerlink" title="1.2.6 支持向量机"></a>1.2.6 支持向量机</h5><p>支持向量机分类（SVM）的目标是发现数据的线性超平面（决策边界），以边界最大化的方式分离数据。</p>
+<p>推荐系统中常用SVM预测缺失值。</p>
+<h5 id="1-2-7-分类器的集成"><a href="#1-2-7-分类器的集成" class="headerlink" title="1.2.7 分类器的集成"></a>1.2.7 分类器的集成</h5><p>分类器集成的思想是，从训练数据构造一系列的分类器，并通过聚集预测值来预测类标签。只要我们能假设这些分类器都是独立的，分类器集成就有效。在这种情况下，我们可以确定分类器产生的最糟糕结果与在集成中的最坏分类是一样的。因此，<strong>结合具有相似的分类错误的独立分类器将只会提升结果</strong>。</p>
+<h5 id="1-2-8-评估分类器"><a href="#1-2-8-评估分类器" class="headerlink" title="1.2.8 评估分类器"></a>1.2.8 评估分类器</h5><p>相关指标：预测兴趣（评分）和测量值的均方差（MAE）或均方根误差（RMSE）、准确率、召回率、F值</p>
+<h4 id="1-3-聚类"><a href="#1-3-聚类" class="headerlink" title="1.3 聚类"></a>1.3 聚类</h4><p>扩展CF分类器的最大问题是计算距离时的操作量，如发现最好的K近邻。一种可能的解决方法是降维，但是即使降低了维度，仍有许多对象要计算距离，这就需要用到聚类。</p>
+<p>聚类算法有两个类别：</p>
+<pre><code>       1. 分层。分层聚类算法在已知聚类上继续聚合物品，生成聚类的嵌套集合，组成一个层级树。
+        2. 划分。划分聚类算法是将数据划分为非重合的聚类，使每个数据项确切在一个聚类中。
+</code></pre><p><strong>聚类在推荐系统中一般被用来提高性能，不管是用户空间还是物品空间，较早进行聚类步骤都能减少随后要做的计算距离的操作数量。但是，这一般以较低的精确度为代价，因此要慎重选择。</strong>事实上，通过降维来提高效率是一般例子中好的选择。</p>
+<h5 id="1-3-1-K-means"><a href="#1-3-1-K-means" class="headerlink" title="1.3.1 K-means"></a>1.3.1 K-means</h5><p>K-means聚类是一种分块方法。</p>
+<p>1）从N个文档随机选取K个文档作为质心</p>
+<p>2）对剩余的每个文档测量其到每个质心的距离，并把它归到最近的质心的类</p>
+<p>3）重新计算已经得到的各个类的质心</p>
+<p>4）迭代2～3步直至新的质心与原质心相等或小于指定阈值，算法结束</p>
+<p>缺陷：</p>
+<p>​    ①为了选择合适的k值，假定有先验的数据知识</p>
+<p>​    ②最终的聚类对于初始的中心点非常敏感</p>
+<p>​    ③时间开销大，会产生空聚类</p>
+<h5 id="1-3-2-改进的K-means算法"><a href="#1-3-2-改进的K-means算法" class="headerlink" title="1.3.2 改进的K-means算法"></a>1.3.2 改进的K-means算法</h5><ol>
+<li>基于密度的聚类算法</li>
+<li>消息传递聚类算法</li>
+<li>分层聚类</li>
+</ol>
+<p>以上K-means的替代方法都还没有应用到推荐系统中，k-means算法的简单和效率由于它的替代算法。</p>
+<h5 id="1-3-3-关联规则挖掘"><a href="#1-3-3-关联规则挖掘" class="headerlink" title="1.3.3 关联规则挖掘"></a>1.3.3 关联规则挖掘</h5><p>给定一组事务集合T，关联规则挖掘的目标是发现具有<strong>支持度</strong>大于等于<strong>最小支持度阈值</strong>以及<strong>置信度</strong>大于等于<strong>最小置信度阈值</strong>的所有规则。</p>
+<h3 id="2-基于内容的推荐系统"><a href="#2-基于内容的推荐系统" class="headerlink" title="2 基于内容的推荐系统"></a>2 基于内容的推荐系统</h3><p>灵感：网站可以根据收集到的用户信息如职业、年龄等切换显示的主题。</p>
+<p>基于内容的推荐系统通过分析一系列用户之前已评分物品的文档和描述，从而基于用户已评分对象的特征建立模型或个人信息。</p>
+<h4 id="2-1-主要结构"><a href="#2-1-主要结构" class="headerlink" title="2.1 主要结构"></a>2.1 主要结构</h4><ol>
+<li><p>内容分析器：将非结构化的信息结构化</p>
+</li>
+<li><p>信息学习器：收集有关用户偏好的数据特征，并试图泛化这些数据，从而构建用户特征信息</p>
+</li>
+<li><p>过滤组件：将用户个人信息与物品在表示空间进行匹配，利用用户个人信息来推荐相关物品</p>
+</li>
+<li><p>反馈：</p>
+<p>①显式反馈：喜欢/不喜欢、评分、文本评论</p>
+<p>②隐式反馈：保存、删除、打印、收藏</p>
+</li>
+</ol>
+<h4 id="2-2-优缺点"><a href="#2-2-优缺点" class="headerlink" title="2.2 优缺点"></a>2.2 优缺点</h4><p>相对于CF算法的优点：</p>
+<p>​    ①用户独立性：仅适用当前用户提供的评分来构建自己的个人信息。</p>
+<p>​    ②透明度：显式列出使得物品出现在推荐列表中的内容特征和描述，可解释推荐系统如何工作。CF是个黑盒子。</p>
+<p>​    ③新物品：基于内容的推荐系统在没有任何用户评分的情况下也可以进行推荐，CF不行。</p>
+<p>缺点：</p>
+<p>​    ①可分析的内容有限：领域知识是必需的，如电影推荐需要知道电影的演员、导演等。可分析的物品的描述要足够多。</p>
+<p>​    ②过度特化：无法发现一些出人意料的物品。</p>
+<p>​    ③新用户：新用户评分很少，无法给出可靠的推荐。</p>
+<h4 id="2-3-物品表示"><a href="#2-3-物品表示" class="headerlink" title="2.3 物品表示"></a>2.3 物品表示</h4><h5 id="2-3-1-基于关键字向量空间模型"><a href="#2-3-1-基于关键字向量空间模型" class="headerlink" title="2.3.1 基于关键字向量空间模型"></a>2.3.1 基于关键字向量空间模型</h5><p>大多数基于内容的推荐系统使用相对简单的搜索模型，如关键字匹配法或基于TF-IDF权重的向量空间模型。</p>
+<p><strong>向量空间模型</strong>：文本文档的空间表示方法，每个文档被表示成一个n维空间的向量，每一维对应给定文档中的一个词。</p>
+<p>用</p>
+<script type="math/tex; mode=display">
+D=\{d_1,d_2,...,d_n\}</script><p>表示一个文档集合或语料库，用</p>
+<script type="math/tex; mode=display">
+T=\{t_1,t_2,...,t_n\}</script><p>表示词典，即语料库中词的集合。</p>
+<p>每篇文档<script type="math/tex">d_j</script>表示n维空间中的一个向量，从而</p>
+<script type="math/tex; mode=display">
+d_j=\{w_{1j},w_{2j},...w_{nj}\}</script><p>其中<script type="math/tex">w_{kj}</script>是文档<script type="math/tex">d_j</script>中<script type="math/tex">t_k</script>的权重。</p>
+<p>常用的加权模式（给单词赋予权重）有基于文本实验观察结果的TF-IDF（词频——逆文档频率）：</p>
+<p>​    ①稀有词相关性不小于频繁词相关性（逆文档频率假设）</p>
+<p>​    ②一篇文档中多处出现的词的相关性不小于只出现一次词的相关性</p>
+<p>​    ③长文档不一定好于段文档（归一化假设）</p>
+<p><strong>即在一篇文档中频繁出现（TF=词频）但很少出现在语料库中其他文档（IDF=逆文档频率）的单词，与该文档主题的相关性可能很大。另外，结果权重向量的归一化防止了长文档有更好的检索机会的问题。</strong></p>
+<p>TF-IDF函数很好的解释了上述假设：</p>
+<script type="math/tex; mode=display">
+TF-IDF(t_k,d_j) = TF(t_k,d_j)\cdot\log{\frac{N}{n_k}}</script><p>N表示语料库中文档的个数，<script type="math/tex">n_k</script>表示<strong>含有词单词tk出现至少一次</strong>的文档集合的数量。</p>
+<script type="math/tex; mode=display">
+TF(t_k,d_j) = \frac{f_{k,j}}{max_zf_{z,j}}</script><p>最大值是出现在文档<script type="math/tex">d_j</script>中所有单词<script type="math/tex">t_z</script>的词频<script type="math/tex">f_{z,j}</script>上计算的。</p>
+<p>余弦归一化：</p>
+<script type="math/tex; mode=display">
+w_{k,j} = \frac{TF-IDF(t_k,d_j)}{\sqrt{\sum_{s=1}^{|T|}{TF-IDF(t_s,d_j)^2}}}</script><p>文档相似度采用余弦相似度度量应用较为广泛：</p>
+<script type="math/tex; mode=display">
+sim(d_i,d_j) = \frac{\sum_{k}{w_{ki}\cdot{w_{kj}}}}{\sqrt{\sum_{k}{w_{ki}^2}}\cdot\sqrt{\sum_{k}{w_{kj}^2}}}</script><h5 id="2-3-2-基于关键词系统"><a href="#2-3-2-基于关键词系统" class="headerlink" title="2.3.2 基于关键词系统"></a>2.3.2 基于关键词系统</h5><h5 id="2-3-3-运用本体的语义分析"><a href="#2-3-3-运用本体的语义分析" class="headerlink" title="2.3.3 运用本体的语义分析"></a>2.3.3 运用本体的语义分析</h5><h5 id="2-3-4-运用百科全书式的知识源进行语义分析"><a href="#2-3-4-运用百科全书式的知识源进行语义分析" class="headerlink" title="2.3.4 运用百科全书式的知识源进行语义分析"></a>2.3.4 运用百科全书式的知识源进行语义分析</h5><h4 id="2-4-学习用户特征的方法"><a href="#2-4-学习用户特征的方法" class="headerlink" title="2.4 学习用户特征的方法"></a>2.4 学习用户特征的方法</h4><h5 id="2-4-1-概率方法和朴素贝叶斯"><a href="#2-4-1-概率方法和朴素贝叶斯" class="headerlink" title="2.4.1 概率方法和朴素贝叶斯"></a>2.4.1 概率方法和朴素贝叶斯</h5><script type="math/tex; mode=display">
+P(c|d) = \frac{P(c)P(d|c)}{P(d)}</script><p>上述用来估计文档d属于类别c的后验概率P（c|d），估计基于先验概率P（c），即观测到一个文档属于类别c的概率，P（d|c）即在给定类别c的情况下观测到文档d的概率，P（d）是观测到文档d的概率。</p>
+<p>为了对文档d分类，选择概率最高的作为类别：</p>
+<script type="math/tex; mode=display">
+c = argmax_{c_j}\frac{P(c_j)P(d|c_j)}{P(d)}</script><p>P(d)与所有类别<script type="math/tex">c_j</script>相等时，一般将其去掉。当我们不知道P(d|c)和P(c)的值时，我们利用观测到的训练数据对它们进行估计。</p>
+<p>有两个被普遍使用的朴素贝叶斯分类模型：<strong>多元伯努利事件模型</strong>和<strong>多项式事件模型</strong>。经验表明，多项式朴素贝叶斯公式胜过多元伯努利模型，计算方式如下：</p>
+<script type="math/tex; mode=display">
+P(c_j|d_i) = P(c_j)\prod_{w\in{V_{d_j}}}^{}{P(t_k|c_j}N_{(d_i,t_k)}</script><script type="math/tex; mode=display">N_(d_j,t_k)$$表示词或记号$$t_k$$在文档$$d_i$$出现的次数。这里要注意，仅是文档$$d_i$$中包含的词汇表子集$$V_{d_i}$$的概率相乘，而不是整个语料库中词汇表V所有的词的概率相乘。
+
+##### 2.4.2 相关反馈和Rocchio算法
+
+**相关反馈**是一个信息检索应用中的技术，它帮助用户逐步完善基于之前搜索结果的查询。
+
+基本原则是允许用户给推荐系统根据用户的信息需求推荐的文本打分。这种形式的反馈随后被用来逐步改善用户特征，或者为训练将用户个人信息作为分类器的学习算法使用。
+
+一些线性的分类器由类别的显式描述（或原始文档）组成。**Rocchio算法**是一个可用于推导出这种线性的且带有描述风格的分类器。该算法将文档表示成向量，因此有相似内容的文档有相似的向量。
+
+Rocchio计算一个分类$$c_i$$的向量$$\vec{c_i}=<{w_{1i},...,w_{|T|i}}>$$（T是词汇表，训练集里不用词的集合），公式如下：</script><p>w_{ki} = \beta\cdot\sum_{\{d_j\in{POS_i}\}}^{}{\frac{w_{kj}}{|POS_i|}} - \gamma\cdot\sum_{\{d_j\in{NEG_i}\}}^{}{\frac{w_{kj}}{|NEG_i|}}</p>
+<p><script type="math/tex">其中</script>w_{kj}​<script type="math/tex">是文档</script>d_j​<script type="math/tex">中词</script>t_k​<script type="math/tex">的**TF-IDF权重**，</script>POS_i​<script type="math/tex">和</script>NEG_i​<script type="math/tex">是指定类别</script>c_j​<script type="math/tex">中的正例和负例样本集合。</script>\beta​<script type="math/tex">和</script>\gamma​<script type="math/tex">是控制参数，可以用来设置所有正例与负例样本的相关程度。计算文档向量</script>\vec{d_j}​<script type="math/tex">与每个类别的原型向量</script>\vec{c_i}​<script type="math/tex">的相似度，和</script>c_i​<script type="math/tex">相似度最高的类别为</script>\overline{c}​<script type="math/tex">，则将</script>\overline{c}​<script type="math/tex">作为文档</script>\vec{d_j}​$$的类别。</p>
+<p>基于Rocchio的分类算法没有任何理论基础，也不保证有效或收敛。</p>
+<h5 id="2-4-3-其他方法"><a href="#2-4-3-其他方法" class="headerlink" title="2.4.3 其他方法"></a>2.4.3 其他方法</h5><p>决策树、决策规则分类器、最近邻算法等。</p>
+<h4 id="2-5-趋势和未来研究"><a href="#2-5-趋势和未来研究" class="headerlink" title="2.5 趋势和未来研究"></a>2.5 趋势和未来研究</h4><p>在科研领域受到许多关注的一种<strong>用户产生内容（UGC）</strong>的方法是<strong>大众分类法</strong>，这是一种由用户产生的分类学，用户大量地选择被称为<strong>标签</strong>的关键字来协助标注和分类感兴趣的资源。</p>
+<h5 id="2-5-1-推荐系统的社会化标签"><a href="#2-5-1-推荐系统的社会化标签" class="headerlink" title="2.5.1 推荐系统的社会化标签"></a>2.5.1 推荐系统的社会化标签</h5><p>①标签标注用户：如电影推荐系统中，对于活跃用户，推荐算法基于电影之间的相似度计算</p>
+<p>②标签标注物品：标签可以携带相应的分数以代表用户在标签上的兴趣程度。</p>
+<p><strong>知识源WORDNET或维基等可以用于识别标签。</strong></p>
+<h5 id="2-5-2-超越特化：惊喜度"><a href="#2-5-2-超越特化：惊喜度" class="headerlink" title="2.5.2 超越特化：惊喜度"></a>2.5.2 超越特化：惊喜度</h5><p>若列表中的物品与用户以前用过的物品特别相似，则需要过滤掉。</p>
+<p><strong>新颖性：</strong>系统建议给用户一个他以及能独立发现的位置物品；</p>
+<p><strong>惊喜度：</strong>推荐系统帮助用户找到使用其他方法无法发现的一个令人惊讶的有趣物品。</p>
+<p>“可操作地推导出意外惊喜”的策略：</p>
+<p>​    ①碰运气或者撞大运，通过<strong>随机信息节点</strong>产生来实现；</p>
+<p>​    ②Pasteur法则（机会垂青有准备的人），通过用户个人信息实现；</p>
+<p>​    ③不寻常情况和例外情况，通过弱相似度量来部分实现；</p>
+<p>​    ④类比推理，实现目前未知。</p>
+<p>基本假设：用户知道物品的概率越低，特定物品导致意外惊喜的概率越高。</p>
+<p>想法：推荐时，可以大量推荐用户更可能感兴趣的物品，中间掺杂可能制造惊喜的物品。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.png" alt="ShareHao 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/ali_pay.jpg" alt="ShareHao 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:16px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/12/27/2018-12-26-推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统/">推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 ShareHao 的个人博客">ShareHao</a></p>
+  <p><span>发布时间:</span>2018年12月27日 - 23:12</p>
+  <p><span>最后更新:</span>2018年12月28日 - 09:12</p>
+  <p><span>原始链接:</span><a href="/2018/12/27/2018-12-26-推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统/" title="推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统">http://yoursite.com/2018/12/27/2018-12-26-推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2018/12/27/2018-12-26-推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/推荐系统/" rel="tag"># 推荐系统</a>
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/27/2018-12-27-推荐系统实践（一）：推荐系统评测/" rel="next" title="推荐系统实践（一）：推荐系统评测">
+                <i class="fa fa-chevron-left"></i> 推荐系统实践（一）：推荐系统评测
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/sharehao.jpg" alt="ShareHao">
+            
+              <p class="site-author-name" itemprop="name">ShareHao</p>
+              <p class="site-description motion-element" itemprop="description">欲速则不达</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/HackXieHao" title="GitHub &rarr; https://github.com/HackXieHao" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="https://www.baidu.com/" rel="noopener" target="_blank">baidu</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统"><span class="nav-number">1.</span> <span class="nav-text">推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-推荐系统中的数据挖掘方法"><span class="nav-number">1.1.</span> <span class="nav-text">1 推荐系统中的数据挖掘方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-数据预处理"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-1-相似度度量方法"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1.1.1 相似度度量方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-2-抽样"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">1.1.2 抽样</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-3-降维"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">1.1.3 降维</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-4-去噪"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">1.1.4 去噪</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-分类"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-1-最近邻KNN"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1.2.1 最近邻KNN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-2-决策树"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">1.2.2 决策树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-3-基于规则的分类"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">1.2.3 基于规则的分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-4-贝叶斯分类器"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">1.2.4 贝叶斯分类器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-5-人工神经网络ANN"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">1.2.5 人工神经网络ANN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-6-支持向量机"><span class="nav-number">1.1.2.6.</span> <span class="nav-text">1.2.6 支持向量机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-7-分类器的集成"><span class="nav-number">1.1.2.7.</span> <span class="nav-text">1.2.7 分类器的集成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-8-评估分类器"><span class="nav-number">1.1.2.8.</span> <span class="nav-text">1.2.8 评估分类器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-聚类"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-1-K-means"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">1.3.1 K-means</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-2-改进的K-means算法"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">1.3.2 改进的K-means算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-3-关联规则挖掘"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">1.3.3 关联规则挖掘</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-基于内容的推荐系统"><span class="nav-number">1.2.</span> <span class="nav-text">2 基于内容的推荐系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-主要结构"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 主要结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-优缺点"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-物品表示"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 物品表示</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-1-基于关键字向量空间模型"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">2.3.1 基于关键字向量空间模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-2-基于关键词系统"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">2.3.2 基于关键词系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-3-运用本体的语义分析"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">2.3.3 运用本体的语义分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-4-运用百科全书式的知识源进行语义分析"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">2.3.4 运用百科全书式的知识源进行语义分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-学习用户特征的方法"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 学习用户特征的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-1-概率方法和朴素贝叶斯"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">2.4.1 概率方法和朴素贝叶斯</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-3-其他方法"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">2.4.3 其他方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-趋势和未来研究"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 趋势和未来研究</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-5-1-推荐系统的社会化标签"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">2.5.1 推荐系统的社会化标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-5-2-超越特化：惊喜度"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">2.5.2 超越特化：惊喜度</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ShareHao</span>
+
+  
+
+  
+</div>
+
+
+<!--
+  <div class="powered-by">
+    <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+      本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+  </div>
+-->
+  <!--
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  -->
+
+
+<!--
+
+  <span class="post-meta-divider">|</span>
+
+-->
+
+
+<!--
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.5.0</div>
+-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  <!--
+  
+
+  
+  -->
+  
+    <span class="site-uv">
+    <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    人
+    </span>
+  
+
+  
+    <span class="site-pv">
+    <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    次
+    </span>
+  
+
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2018/12/27/2018-12-26-推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统/';
+        this.page.identifier = '2018/12/27/2018-12-26-推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统/';
+        this.page.title = '推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'eeLPk8Sfvkxd4K9PnHmKEceH-gzGzoHsz',
+        appKey: 'CGzn4mLbSyeH47dqWSMfC6EQ',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+</body>
+</html>

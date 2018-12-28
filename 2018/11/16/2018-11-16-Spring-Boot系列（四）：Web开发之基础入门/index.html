@@ -615,12 +615,12 @@
 <li><p>Automatic registration of <strong><code>Converter</code>, <code>GenericConverter</code>, <code>Formatter</code></strong> beans.</p>
 <ul>
 <li>Converter：转换器； public String hello(User user)：类型转换使用Converter</li>
-<li>Formatter ：格式化器； 2018.11.16 —– &gt; Date；</li>
+<li>Formatter ：格式化器； 2018.11.16 ——- &gt; Date；</li>
 </ul>
 </li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="meta">@ConditionalOnProperty</span>(prefix = <span class="string">"spring.mvc"</span>, name = <span class="string">"date-format"</span>)<span class="comment">//在文件中配置日期格式化的规则</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Formatter&lt;Date&gt; <span class="title">dateFormatter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> DateFormatter(<span class="keyword">this</span>.mvcProperties.getDateFormat());<span class="comment">//日期格式化组件</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="6">
+<ol>
 <li>Support for <strong><code>HttpMessageConverters</code></strong> (see below).：SpringMVC用来<strong>转换Http请求和响应</strong>的，User—Json</li>
 <li>Automatic registration of <strong><code>MessageCodesResolver</code></strong> (see below). ：<strong>定义错误代码生成规则</strong></li>
 <li>Automatic use of a <strong><code>ConfigurableWebBindingInitializer</code></strong> bean (see below).：<strong>初始化WebDataBinder，请求数据转换为JavaBean</strong></li>
@@ -859,7 +859,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1554,6 +1554,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
   

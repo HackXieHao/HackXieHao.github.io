@@ -612,15 +612,15 @@
 <li>创建在hadoop-2.7.2文件下面创建一个input文件夹</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> mkdir input</span><br></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>将Hadoop的xml配置文件复制到input</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cp etc/hadoop/*.xml input</span><br></pre></td></tr></table></figure>
-<ol start="3">
+<ol>
 <li>执行share目录下的MapReduce程序（保证output目录不存在）</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar grep input output 'dfs[a-z.]+'</span><br></pre></td></tr></table></figure>
-<ol start="4">
+<ol>
 <li>查看输出结果</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cat output/*</span><br></pre></td></tr></table></figure>
@@ -628,22 +628,22 @@
 <li>创建在hadoop-2.7.2文件下面创建一个wcinput文件夹</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> mkdir wcinput</span><br></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>在wcinput文件下创建一个wc.input文件</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cd wcinput</span><br><span class="line"><span class="meta">$</span> touch wc.input</span><br></pre></td></tr></table></figure>
-<ol start="3">
+<ol>
 <li>编辑wc.input文件，输入单词内容</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> vim wc.input</span><br></pre></td></tr></table></figure>
-<ol start="4">
+<ol>
 <li>回到Hadoop目录/opt/hadoop-2.7.2</li>
 </ol>
-<ol start="5">
+<ol>
 <li>执行程序</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount wcinput wcoutput</span><br></pre></td></tr></table></figure>
-<ol start="6">
+<ol>
 <li>查看结果</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cat wcoutput/part-r-00000</span><br></pre></td></tr></table></figure>
@@ -856,7 +856,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1551,6 +1551,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
   

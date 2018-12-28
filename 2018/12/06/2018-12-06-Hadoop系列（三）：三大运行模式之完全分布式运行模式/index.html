@@ -607,7 +607,8 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ./xsync.sh /opt/software</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h3 id="3-集群配置"><a href="#3-集群配置" class="headerlink" title="3 集群配置"></a>3 集群配置</h3><h4 id="3-1-集群部署规划"><a href="#3-1-集群部署规划" class="headerlink" title="3.1 集群部署规划"></a>3.1 集群部署规划</h4><table>
+<h3 id="3-集群配置"><a href="#3-集群配置" class="headerlink" title="3 集群配置"></a>3 集群配置</h3><h4 id="3-1-集群部署规划"><a href="#3-1-集群部署规划" class="headerlink" title="3.1 集群部署规划"></a>3.1 集群部署规划</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th style="text-align:center"></th>
@@ -631,6 +632,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>说明：<strong>NameNode、SecondaryNameNode  以及 ResourceManager  不能在同一台服务器上。</strong></p>
 <h4 id="3-2-配置集群"><a href="#3-2-配置集群" class="headerlink" title="3.2 配置集群"></a>3.2 配置集群</h4><h5 id="3-2-1-配置core-site-xml"><a href="#3-2-1-配置core-site-xml" class="headerlink" title="3.2.1 配置core-site.xml"></a>3.2.1 配置core-site.xml</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定HDFS中NameNode的地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      	<span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://hadoop01:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定Hadoop运行时产生文件的存储目录 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/hadoop-2.7.2/data/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h5 id="3-2-2-配置HDFS配置文件"><a href="#3-2-2-配置HDFS配置文件" class="headerlink" title="3.2.2 配置HDFS配置文件"></a>3.2.2 配置HDFS配置文件</h5><ol>
@@ -714,7 +716,8 @@
 <p>（2）需要在hadoop02上采用sharehao账号，配置无密登录到hadoop01、hadoop02、hadoop03。</p>
 </li>
 </ol>
-<h4 id="4-3-ssh文件夹下（-ssh）的文件功能解释"><a href="#4-3-ssh文件夹下（-ssh）的文件功能解释" class="headerlink" title="4.3 .ssh文件夹下（~/.ssh）的文件功能解释"></a>4.3 .ssh文件夹下（~/.ssh）的文件功能解释</h4><table>
+<h4 id="4-3-ssh文件夹下（-ssh）的文件功能解释"><a href="#4-3-ssh文件夹下（-ssh）的文件功能解释" class="headerlink" title="4.3 .ssh文件夹下（~/.ssh）的文件功能解释"></a>4.3 .ssh文件夹下（~/.ssh）的文件功能解释</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th style="text-align:center">known_hosts</th>
@@ -736,6 +739,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3 id="5-集群时间同步"><a href="#5-集群时间同步" class="headerlink" title="5 集群时间同步"></a>5 集群时间同步</h3><h4 id="5-1-基准服务器配置"><a href="#5-1-基准服务器配置" class="headerlink" title="5.1 基准服务器配置"></a>5.1 基准服务器配置</h4><p><strong>注：必须使用root用户</strong></p>
 <ol>
 <li><p>检查ntp是否安装</p>
@@ -962,7 +966,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1657,6 +1661,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
   

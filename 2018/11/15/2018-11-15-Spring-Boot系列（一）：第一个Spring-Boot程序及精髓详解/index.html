@@ -595,7 +595,7 @@
 </ol>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.9.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">上述配置的父项目如下（可通过Ctrl+鼠标左键查看父项目）：</span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.9.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../../spring-boot-dependencies<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">他来真正管理Spring Boot应用里面的所有依赖版本；</span><br></pre></td></tr></table></figure>
 <p>因此上述配置是Spring Boot的<strong>版本仲裁中心</strong>。</p>
-<ol start="2">
+<ol>
 <li>启动器</li>
 </ol>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -650,7 +650,7 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--导入配置文件处理器，配置文件进行绑定就会有提示--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-configuration-processor<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>@Value</strong>获取值和@ConfigurationProperties获取值比较</p>
-<p>|            | @ConfigurationProperties | @Value |<br>| ———- | ———————— | —— |<br>| 功能         | 批量注入配置文件中的属性             | 一个个指定  |<br>| 松散绑定（松散语法） | 支持                       | 不支持    |<br>| SpEL       | 不支持                      | 支持     |<br>| JSR303数据校验 | 支持                       | 不支持    |<br>| 复杂类型封装     | 支持                       | 不支持    |</p>
+<p>|            | @ConfigurationProperties | @Value |<br>| ————— | ———————————— | ——— |<br>| 功能         | 批量注入配置文件中的属性             | 一个个指定  |<br>| 松散绑定（松散语法） | 支持                       | 不支持    |<br>| SpEL       | 不支持                      | 支持     |<br>| JSR303数据校验 | 支持                       | 不支持    |<br>| 复杂类型封装     | 支持                       | 不支持    |</p>
 </li>
 <li><p>关于@Value和@ConfigurationProperties的使用情况</p>
 <ul>
@@ -666,7 +666,7 @@
 <li>@<strong>PropertySource</strong>：加载指定的配置文件；（可将配置文件与主配置文件application.properties分离开来）</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PropertySource</span>(value = &#123;<span class="string">"classpath:person.properties"</span>&#125;)</span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"person"</span>)</span><br><span class="line"><span class="comment">//@Validated</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * &lt;bean class="Person"&gt;</span></span><br><span class="line"><span class="comment">     *      &lt;property name="lastName" value="字面量/$&#123;key&#125;从环境变量、配置文件中获取值/#&#123;SpEL&#125;"&gt;&lt;/property&gt;</span></span><br><span class="line"><span class="comment">     * &lt;bean/&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">//lastName必须是邮箱格式</span></span><br><span class="line">   <span class="comment">// @Email</span></span><br><span class="line">    <span class="comment">//@Value("$&#123;person.last-name&#125;")</span></span><br><span class="line">    <span class="keyword">private</span> String lastName;</span><br><span class="line">    <span class="comment">//@Value("#&#123;11*2&#125;")</span></span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="comment">//@Value("true")</span></span><br><span class="line">    <span class="keyword">private</span> Boolean boss;</span><br></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li><p>@<strong>ImportResource</strong>：导入Spring的配置文件，让配置文件里面的内容生效；</p>
 <p>Spring Boot里面没有Spring的配置文件，我们自己编写的配置文件，也不能自动识别；若想让Spring的配置文件生效，加载进来，则使用@<strong>ImportResource</strong>标注在一个<strong>配置类</strong>（如主配置类）上。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ImportResource</span>(locations = &#123;<span class="string">"classpath:beans.xml"</span>&#125;)</span><br><span class="line"><span class="comment">//导入Spring的配置文件让其生效</span></span><br></pre></td></tr></table></figure>
@@ -707,6 +707,7 @@
 </ol>
 <p>关于一些细节：</p>
 <p><strong>@Conditional派生注解</strong>：必须是@Conditional指定的条件成立，才给容器中添加组件，配置配里面的所有内容才生效；</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -765,6 +766,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>另外，<strong>可以通过启用 debug=true属性；来让控制台打印自动配置报告</strong>，这样我们就可以很方便的知道哪些自动配置类生效。</p>
 <h3 id="5-Profile"><a href="#5-Profile" class="headerlink" title="5 Profile"></a>5 Profile</h3><h4 id="5-1-多Profile文件"><a href="#5-1-多Profile文件" class="headerlink" title="5.1 多Profile文件"></a>5.1 多Profile文件</h4><p>我们在主配置文件编写的时候，文件名可以是 application-{profile}.properties/yml</p>
 <p>默认使用application.properties的配置；</p>
@@ -817,7 +819,7 @@
 </li>
 </ol>
 <p>​    <strong>再来加载不带profile</strong></p>
-<ol start="8">
+<ol>
 <li><p><strong>jar包外部的application.properties或application.yml(不带spring.profile)配置文件</strong></p>
 </li>
 <li><p><strong>jar包内部的application.properties或application.yml(不带spring.profile)配置文件</strong></p>
@@ -1029,7 +1031,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1724,6 +1726,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
   

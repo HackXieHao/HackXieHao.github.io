@@ -134,13 +134,13 @@
 
 
 
-  <meta name="description" content="Spring Boot系列（二）：集成日志框架1 日志框架1.1 市面上的日志框架市面上目前使用的日志框架有：JUL、JCL、Jboss-logging、logback、log4j、log4j2、slf4j….    日志门面 （日志的抽象层） 日志实现     JCL（Jakarta Commons Logging） SLF4j（Simple Logging Facade for Java） j">
+  <meta name="description" content="Spring Boot系列（二）：集成日志框架1 日志框架1.1 市面上的日志框架市面上目前使用的日志框架有：JUL、JCL、Jboss-logging、logback、log4j、log4j2、slf4j….     日志门面 （日志的抽象层） 日志实现     JCL（Jakarta Commons Logging） SLF4j（Simple Logging Facade for Java）">
 <meta name="keywords" content="Spring Boot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Boot系列（二）：集成日志框架">
 <meta property="og:url" content="http://yoursite.com/2018/11/15/2018-11-15-Spring-Boot系列（二）：集成日志框架/index.html">
 <meta property="og:site_name" content="ShareHao">
-<meta property="og:description" content="Spring Boot系列（二）：集成日志框架1 日志框架1.1 市面上的日志框架市面上目前使用的日志框架有：JUL、JCL、Jboss-logging、logback、log4j、log4j2、slf4j….    日志门面 （日志的抽象层） 日志实现     JCL（Jakarta Commons Logging） SLF4j（Simple Logging Facade for Java） j">
+<meta property="og:description" content="Spring Boot系列（二）：集成日志框架1 日志框架1.1 市面上的日志框架市面上目前使用的日志框架有：JUL、JCL、Jboss-logging、logback、log4j、log4j2、slf4j….     日志门面 （日志的抽象层） 日志实现     JCL（Jakarta Commons Logging） SLF4j（Simple Logging Facade for Java）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2018/11/15/2018-11-15-Spring-Boot系列（二）：集成日志框架/001.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/15/2018-11-15-Spring-Boot系列（二）：集成日志框架/002.png">
@@ -149,7 +149,7 @@
 <meta property="og:updated_time" content="2018-11-15T14:18:10.914Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot系列（二）：集成日志框架">
-<meta name="twitter:description" content="Spring Boot系列（二）：集成日志框架1 日志框架1.1 市面上的日志框架市面上目前使用的日志框架有：JUL、JCL、Jboss-logging、logback、log4j、log4j2、slf4j….    日志门面 （日志的抽象层） 日志实现     JCL（Jakarta Commons Logging） SLF4j（Simple Logging Facade for Java） j">
+<meta name="twitter:description" content="Spring Boot系列（二）：集成日志框架1 日志框架1.1 市面上的日志框架市面上目前使用的日志框架有：JUL、JCL、Jboss-logging、logback、log4j、log4j2、slf4j….     日志门面 （日志的抽象层） 日志实现     JCL（Jakarta Commons Logging） SLF4j（Simple Logging Facade for Java）">
 <meta name="twitter:image" content="http://yoursite.com/2018/11/15/2018-11-15-Spring-Boot系列（二）：集成日志框架/001.png">
 
 
@@ -569,6 +569,7 @@
 
       
         <h2 id="Spring-Boot系列（二）：集成日志框架"><a href="#Spring-Boot系列（二）：集成日志框架" class="headerlink" title="Spring Boot系列（二）：集成日志框架"></a>Spring Boot系列（二）：集成日志框架</h2><h3 id="1-日志框架"><a href="#1-日志框架" class="headerlink" title="1 日志框架"></a>1 日志框架</h3><h4 id="1-1-市面上的日志框架"><a href="#1-1-市面上的日志框架" class="headerlink" title="1.1 市面上的日志框架"></a>1.1 市面上的日志框架</h4><p>市面上目前使用的日志框架有：JUL、JCL、Jboss-logging、logback、log4j、log4j2、slf4j….</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -583,6 +584,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>日志门面和日志实现的关系类似于JDBC和各个数据库；</p>
 <p>SpringBoot：底层是Spring框架，Spring框架默认是用JCL；</p>
 <p><strong>Spring Boot 选用SLF4j和logback。</strong></p>
@@ -609,7 +611,7 @@
 </ol>
 <h3 id="2-Spring-Boot日志框架原理"><a href="#2-Spring-Boot日志框架原理" class="headerlink" title="2 Spring Boot日志框架原理"></a>2 Spring Boot日志框架原理</h3><h4 id="2-1-Spring-Boot日志关系"><a href="#2-1-Spring-Boot日志关系" class="headerlink" title="2.1 Spring Boot日志关系"></a>2.1 Spring Boot日志关系</h4><p>Spring Boot使用如下依赖包实现日志功能：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>其底层依赖关系如下图所示（在IDEA中通过右击pom.xml，右击 –&gt; Diagrams –&gt; Show Dependencies）：</p>
+<p>其底层依赖关系如下图所示（在IDEA中通过右击pom.xml，右击 —&gt; Diagrams —&gt; Show Dependencies）：</p>
 <p><img src="/2018/11/15/2018-11-15-Spring-Boot系列（二）：集成日志框架/003.png" alt="Spring Boot底层日志依赖关系"></p>
 <p>由上述关系可知：</p>
 <p>① Spring Boot底层使用slf4j+logback的方式进行日志记录</p>
@@ -624,6 +626,7 @@
 <h4 id="3-2-修改默认配置"><a href="#3-2-修改默认配置" class="headerlink" title="3.2 修改默认配置"></a>3.2 修改默认配置</h4><p>在application.properties设置参数值即可：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">logging.level.com.atguigu=trace</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#logging.path=</span><br><span class="line"># 不指定路径在当前项目下生成springboot.log日志</span><br><span class="line"># 可以指定完整的路径；</span><br><span class="line">#logging.file=G:/springboot.log</span><br><span class="line"></span><br><span class="line"># 在当前磁盘的根路径下创建spring文件夹和里面的log文件夹；使用 spring.log 作为默认文件</span><br><span class="line">logging.path=/spring/log</span><br><span class="line"></span><br><span class="line">#  在控制台输出的日志的格式</span><br><span class="line">logging.pattern.console=%d&#123;yyyy-MM-dd&#125; [%thread] %-5level %logger&#123;50&#125; - %msg%n</span><br><span class="line"># 指定文件中日志输出的格式</span><br><span class="line">logging.pattern.file=%d&#123;yyyy-MM-dd&#125; === [%thread] === %-5level === %logger&#123;50&#125; ==== %msg%n</span><br></pre></td></tr></table></figure>
 <p>logging.file 和 logging.path的区别：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -654,8 +657,10 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h4 id="3-3-指定配置"><a href="#3-3-指定配置" class="headerlink" title="3.3 指定配置"></a>3.3 指定配置</h4><p>自己编写好日志配置文件后，放在<strong>类路径</strong>下即可。此时SpringBoot就不使用默认配置了。</p>
 <p>指定配置不同日志框架时，命名规则如下表：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -678,6 +683,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>logback.xml 与 logback-spring.xml 的区别：</p>
 <ul>
 <li><p>logback.xml：直接就被日志框架识别了；</p>
@@ -906,7 +912,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1601,6 +1607,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
   
