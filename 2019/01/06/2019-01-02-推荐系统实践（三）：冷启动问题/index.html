@@ -134,16 +134,20 @@
 
 
 
-  <meta name="description" content="欲速则不达">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ShareHao">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="推荐系统实践（三）：冷启动问题1 冷启动问题简介实现个性化推荐： ​    用户冷启动：新用户 ​    物品冷启动：新物品 ​    系统冷启动：新网站（没有用户，没有用户行为，只有物品信息） 解决方案： ​    ①提供非个性化推荐，如热门榜单物品等。 ​    ②利用注册信息 ​    ③利用物品内容信息 ​    ④在系统冷启动时，可以引入专家的知识，通过一定的高效方式迅速建立起物品的相关">
+<meta name="keywords" content="推荐系统,机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="推荐系统实践（三）：冷启动问题">
+<meta property="og:url" content="http://yoursite.com/2019/01/06/2019-01-02-推荐系统实践（三）：冷启动问题/index.html">
 <meta property="og:site_name" content="ShareHao">
-<meta property="og:description" content="欲速则不达">
+<meta property="og:description" content="推荐系统实践（三）：冷启动问题1 冷启动问题简介实现个性化推荐： ​    用户冷启动：新用户 ​    物品冷启动：新物品 ​    系统冷启动：新网站（没有用户，没有用户行为，只有物品信息） 解决方案： ​    ①提供非个性化推荐，如热门榜单物品等。 ​    ②利用注册信息 ​    ③利用物品内容信息 ​    ④在系统冷启动时，可以引入专家的知识，通过一定的高效方式迅速建立起物品的相关">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/01/06/2019-01-02-推荐系统实践（三）：冷启动问题/001.png">
+<meta property="og:updated_time" content="2019-01-06T08:00:51.594Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ShareHao">
-<meta name="twitter:description" content="欲速则不达">
+<meta name="twitter:title" content="推荐系统实践（三）：冷启动问题">
+<meta name="twitter:description" content="推荐系统实践（三）：冷启动问题1 冷启动问题简介实现个性化推荐： ​    用户冷启动：新用户 ​    物品冷启动：新物品 ​    系统冷启动：新网站（没有用户，没有用户行为，只有物品信息） 解决方案： ​    ①提供非个性化推荐，如热门榜单物品等。 ​    ②利用注册信息 ​    ③利用物品内容信息 ​    ④在系统冷启动时，可以引入专家的知识，通过一定的高效方式迅速建立起物品的相关">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/06/2019-01-02-推荐系统实践（三）：冷启动问题/001.png">
 
 
 
@@ -152,7 +156,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2018/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/06/2019-01-02-推荐系统实践（三）：冷启动问题/">
 
 
 
@@ -162,7 +166,7 @@
   };
 </script>
 
-  <title>归档 | ShareHao</title>
+  <title>推荐系统实践（三）：冷启动问题 | ShareHao</title>
   
 
 
@@ -211,7 +215,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -320,7 +324,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -408,426 +412,371 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/06/2019-01-02-推荐系统实践（三）：冷启动问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShareHao">
+      <meta itemprop="description" content="欲速则不达">
+      <meta itemprop="image" content="/images/sharehao.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShareHao">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">推荐系统实践（三）：冷启动问题
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-06 16:00:11 / 修改时间：16:00:51" itemprop="dateCreated datePublished" datetime="2019-01-06T16:00:11+08:00">2019-01-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 16 篇日志。 继续努力。
-      </span>
-      
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/06/2019-01-02-推荐系统实践（三）：冷启动问题/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/06/2019-01-02-推荐系统实践（三）：冷启动问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/27/2018-12-26-推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统/" itemprop="url">
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">推荐系统入门学习系列（一）：推荐系统方法概述及基于内容的推荐系统</span>
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,367 字
+                </span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-27T23:15:49+08:00" content="2018-12-27">
-          12-27
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
 
+          
 
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/27/2018-12-27-推荐系统实践（一）：推荐系统评测/" itemprop="url">
-              
-                <span itemprop="name">推荐系统实践（一）：推荐系统评测</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-27T20:22:00+08:00" content="2018-12-27">
-          12-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/07/2018-12-07-今天你更博学了吗系列（一）：夏虫不可语冰，井蛙不可语海/" itemprop="url">
-              
-                <span itemprop="name">“今天你更博学了吗”系列（一）：夏虫不可语冰，井蛙不可语海</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-07T23:50:21+08:00" content="2018-12-07">
-          12-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h2 id="推荐系统实践（三）：冷启动问题"><a href="#推荐系统实践（三）：冷启动问题" class="headerlink" title="推荐系统实践（三）：冷启动问题"></a>推荐系统实践（三）：冷启动问题</h2><h3 id="1-冷启动问题简介"><a href="#1-冷启动问题简介" class="headerlink" title="1 冷启动问题简介"></a>1 冷启动问题简介</h3><p>实现个性化推荐：</p>
+<p>​    用户冷启动：新用户</p>
+<p>​    物品冷启动：新物品</p>
+<p>​    系统冷启动：新网站（没有用户，没有用户行为，只有物品信息）</p>
+<p>解决方案：</p>
+<p>​    ①提供非个性化推荐，如热门榜单物品等。</p>
+<p>​    ②利用注册信息</p>
+<p>​    ③利用物品内容信息</p>
+<p>​    ④在系统冷启动时，可以引入专家的知识，通过一定的高效方式迅速建立起物品的相关度表</p>
+<h3 id="2-利用用户注册信息"><a href="#2-利用用户注册信息" class="headerlink" title="2 利用用户注册信息"></a>2 利用用户注册信息</h3><p>用户注册信息分为以下3种：</p>
+<pre><code> 1.  **人口统计学信息**：包括用户的年龄、性别、职业、民族、学历和居住地
+2.   **用户兴趣的描述**：有一些网站会让用户用文字描述他们的兴趣
+3.   **从其他网站导入的用户站外行为数据**：比如用户通过豆瓣、新浪微博的账号登录，就可以
+ 在得到用户同意的情况下获取用户在豆瓣或者新浪微博的一些行为数据和社交网络数据
+</code></pre><p><strong>基于人口统计学特征的推荐系统其典型代表是Bruce Krulwich开发的Lifestyle Finder</strong>。首先，Bruce Krulwich将美国人群根据人口统计学属性分成<strong>62类</strong>，然后对于每个新用户根据其填写的个人资料判断他属于什么分类，最后给他推荐这类用户最喜欢的15个链接，其中5个链接是推荐他购买的商品，5个链接是推荐他旅游的地点，剩下的5个链接是推荐他去逛的商店。</p>
+<p>基于注册信息的个性化推荐<strong>基本流程</strong>：<br>​    (1) 获取用户的注册信息；<br>​    (2) 根据用户的注册信息对用户分类；<br>​    (3) 给用户推荐他所属分类中用户喜欢的物品。</p>
+<p><img src="/2019/01/06/2019-01-02-推荐系统实践（三）：冷启动问题/001.png" alt="基于注册信息个性化推荐举例图示"></p>
+<p>我们可以用图示的这3张相关表查询出的电视剧列表<strong>按照一定权重相加</strong>，得到给用户的最终推荐列表。</p>
+<p>基于用户注册信息的推荐算法其核心问题是<strong>计算每种特征的用户喜欢的物品</strong>。即对于每种特征 $f$，计算具有这种特征的用户对各个物品的喜好程度 $p(f, i)$，公式如下：</p>
+<script type="math/tex; mode=display">
+p(f,i) = |N(i)\cap{U(f)}|</script><p>其中 $N(i)$ 是喜欢物品 $i$ 的用户集合， $U(f)$ 是具有特征 $f$ 的用户集合。</p>
+<p>公式缺点：热门物品会在各种特征的用户中都具有比较高的权重，即$|N(i)|$比较高的物品会在每一类用户都有比较高的 $p(f,i)$，而给用户推荐热门物品并不是推荐系统的主要任务，<strong>推荐系统应该帮助用户发现他们不容易发现的物品</strong>，<strong>改进</strong>公式如下：</p>
+<script type="math/tex; mode=display">
+p(f,i) =\frac{|N(i)\cap{U(f)}|}{|N(i) + \alpha|}</script><p>分母中使用参数 $\alpha$ 的目的是解决数据稀疏问题。比如有一个物品只被 1 个用户喜欢过，而这个用户刚好就有特征 $f$ ，那么就有 $p(f,i) = 1$。但是，这种情况并没有统计意义，因此我们为分母加上一个比较大的数，可以避免这样的物品产生比较大的权重。</p>
+<p>包含人口统计学信息的数据集： <strong>BookCrossing 数据集</strong> 和 <strong>Lastfm 数据集。</strong></p>
+<h3 id="3-利用用户对物品的反馈（启动物品）"><a href="#3-利用用户对物品的反馈（启动物品）" class="headerlink" title="3 利用用户对物品的反馈（启动物品）"></a>3 利用用户对物品的反馈（启动物品）</h3><p>解决用户冷启动问题的另一个方法是在新用户第一次访问推荐系统时，不立即给用户展示推荐结果，而是给用户提供一些物品，让用户反馈他们对这些物品的兴趣，然后根据用户反馈给提供个性化推荐。</p>
+<p><strong>关键问题是如何选择物品让用户反馈？</strong></p>
+<p>①比较热门的</p>
+<p>②具有代表性和区分性的</p>
+<p>③多样性</p>
+<p> Nadav Golbandi 在论文中提出可以用一个决策树解决这个问题，首先，给定一群用户， Nadav Golbandi 用这群<strong>用户对物品评分的方差</strong>度量这群用户兴趣的一致程度。如果方差很大，说明这一群用户的兴趣不太一致，反之则说明这群用户的兴趣比较一致。</p>
+<p>令 $\sigma_u\in{U’}$ 为用户集合 $U’$ 中所有评分的方差， Nadav Golbandi 的基本思想是通过如下方式度量一个物品的区分度 $D(i)$:</p>
+<script type="math/tex; mode=display">
+D(i) = \sigma_{u\in{N^+(i)}} + \sigma_{u\in{N^-(i)}} +  \sigma_{u\in\overline{N}(i)}</script><p>其中，$N^+(i)$ 是喜欢物品 $i$ 的用户集合，$N^-(i)$ 是不喜欢物品 $i$ 的用户集合，$\overline{N}(i)$ 是没有对物品 $i$ 评分的用户合。$\sigma_{u\in{N^+(i)}}$ 是喜欢物品 $i$ 的用户对其他物品评分的方差，$\sigma_{u\in{N^-(i)}}$ 是不喜欢物品 $i$ 的用户对其他物品评分的方差， $\sigma_{u\in\overline{N}(i)}$ 是没有对物品 $i$ 评分的用户对其他物品评分的方差。对于物品 $i$ ， Nadav Golbandi 将用户分成 3 类——喜欢物品 $i$ 的用户、不喜欢物品 $i$ 的用户和不知道物品 $i$ 的用户（即没有给 $i$ 评分的用户）。<strong>如果这 3 类用户集合内的用户对其他的物品兴趣很不一致，说明物品 $i$ 具有较高的区分度。</strong></p>
+<p><strong>算法流程：</strong></p>
+<p>（1）首先会从所有用户中找到具有最高区分度的物品 $i$ ，然后将用户分成 3类</p>
+<p>（2）然后在每类用户中再找到最具区分度的物品，然后将每一类用户又各自分为 3 类，也就是将总用户分成 9 类，然后这样继续下去，最终可以通过对一系列物品的看法将用户进行分类。</p>
+<p>（3）冷启动时，<strong>从根节点开始询问用户对该节点物品的看法</strong>，然后根据用户的选择将用户放到不同的分枝</p>
+<h3 id="4-利用物品的内容信息"><a href="#4-利用物品的内容信息" class="headerlink" title="4 利用物品的内容信息"></a>4 利用物品的内容信息</h3><p>一般来说，物品的内容可以通过<strong>向量空间模型</strong>表示，该模型会将物品表示成一个关键词向量。如果物品的内容是一些诸如导演、演员等实体的话，可以直接将这些实体作为关键词。但如果内容是文本的形式，则需要引入一些理解自然语言的技术抽取关键词。对于中文，首先要对文本进行分词，将字流变成词流，然后从词流中检测出命名实体（如人名、地名、组织名等），这些实体和一些其他重要的词将组成关键词集合，最后<strong>对关键词进行排名，计算每个关键词的权重</strong>，从而生成关键词向量。</p>
+<p>对物品 $d$ ，它的内容表示成一个关键词向量如下：</p>
+<script type="math/tex; mode=display">
+d_i = \{(e_1,w_1),(e_2,w_2),...\}</script><p>其中，$e_i$ 就是关键词， $w_i$ 是关键词对应的权重。如果物品是文本，我们可以用信息检索领域著名的 <strong>TF-IDF</strong> 公式计算词的权重：</p>
+<script type="math/tex; mode=display">
+w_i = \frac{TF(e_i)}{\log{DF(e_i)}}</script><p>如果物品是电影，可以<strong>根据演员在剧中的重要程度赋予他们权重</strong>。</p>
+<p>在给定物品内容的关键词向量后，物品的内容相似度可以通过向量之间的<strong>余弦相似度</strong>计算：</p>
+<script type="math/tex; mode=display">
+w_{ij} = \frac{d_i\cdot{d_j}}{\sqrt{||d_i||||d_j||}}</script><p><strong>内容过滤算法特点：</strong></p>
+<p>​    内容过滤算法忽视了用户行为，从而也忽视了物品的流行度以及用户行为中所包含的规律，因此它的精度比较低，但结果的新颖度比较高。如果<strong>用户的行为强烈受某一内容属性的影响</strong>，那么内容过滤的算法还是可以在精度上超过协同过滤算法的。不过这种强的内容特征不是所有物品都具有的，而且需要丰富的领域知识才能获得，所以很多时候内容过滤算法的精度比协同过滤算法差。</p>
+<p>​    内容过滤算法与协同过滤算法两种算法融合，一定能够获得比单独使用这两种算法更好的效果。</p>
+<p>另外，ECML/PKDD 在 2011 年举办过一次利用物品内容信息解决冷启动问题的比赛。对内容推荐的详细了解可以关注该比赛的相关论文。</p>
+<p><strong>话题模型算法LDA：</strong>（详细了解参见： DM Blei 的论文“ Latent Dirichlet Allocation ”）</p>
+<p>​    在使用 LDA 计算物品的内容相似度时，我们可以先计算出物品在话题上的分布，然后利用两个物品的话题分布计算物品的相似度。比如，<strong>如果两个物品的话题分布相似，则认为两个物品具有较高的相似度</strong>，反之则认为两个物品的相似度较低。计算分布的相似度可以利用 <strong>KL 散度</strong>：</p>
+<script type="math/tex; mode=display">
+D_{KL}(p||q) = \sum_{i}p(i)ln{\frac{p(i)}{q(i)}}</script><p>其中 $p$ 和 $q$ 是两个分布， $KL$ 散度越大说明分布的相似度越低。</p>
+<h3 id="5-发挥专家的作用"><a href="#5-发挥专家的作用" class="headerlink" title="5 发挥专家的作用"></a>5 发挥专家的作用</h3><p>通过专家对物品或案例进行特征标记，从而进行相似度计算。</p>
+<p>如Pandora个性化电台实现的推荐是通过雇佣一批懂计算机的音乐人进行了一项称为音乐基因的项目，他们听了几万名歌手的歌，并对这些歌的各个维度进行标注。最终，他们使用了 400 多个特征用来标记每首歌。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/06/2018-12-06-Hadoop系列（三）：三大运行模式之完全分布式运行模式/" itemprop="url">
-              
-                <span itemprop="name">Hadoop系列（三）：三大运行模式之完全分布式运行模式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-06T23:02:07+08:00" content="2018-12-06">
-          12-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/05/2018-12-04-Hadoop系列（二）：三大运行模式之伪分布式运行模式/" itemprop="url">
-              
-                <span itemprop="name">Hadoop系列（二）：三大运行模式之伪分布式运行模式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-05T10:48:29+08:00" content="2018-12-05">
-          12-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/05/2018-12-04-Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式/" itemprop="url">
-              
-                <span itemprop="name">Hadoop系列（一）：Hadoop运行环境搭建及本地运行模式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-05T10:42:00+08:00" content="2018-12-05">
-          12-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/16/2018-11-16-Spring-Boot系列（五）：Web开发之国际化与拦截器/" itemprop="url">
-              
-                <span itemprop="name">Spring Boot系列（五）：Web开发之国际化与拦截器</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-16T23:56:44+08:00" content="2018-11-16">
-          11-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/16/2018-11-16-Spring-Boot系列（四）：Web开发之基础入门/" itemprop="url">
-              
-                <span itemprop="name">Spring Boot系列（四）：Web开发之基础入门</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-16T23:24:58+08:00" content="2018-11-16">
-          11-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/15/2018-11-15-Spring-Boot系列（三）：Thymeleaf的使用/" itemprop="url">
-              
-                <span itemprop="name">Spring Boot系列（三）：Thymeleaf的使用</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-15T22:58:51+08:00" content="2018-11-15">
-          11-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/15/2018-11-15-Spring-Boot系列（二）：集成日志框架/" itemprop="url">
-              
-                <span itemprop="name">Spring Boot系列（二）：集成日志框架</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-15T22:14:02+08:00" content="2018-11-15">
-          11-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.png" alt="ShareHao 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/ali_pay.jpg" alt="ShareHao 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:16px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/01/06/2019-01-02-推荐系统实践（三）：冷启动问题/">推荐系统实践（三）：冷启动问题</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 ShareHao 的个人博客">ShareHao</a></p>
+  <p><span>发布时间:</span>2019年01月06日 - 16:01</p>
+  <p><span>最后更新:</span>2019年01月06日 - 16:01</p>
+  <p><span>原始链接:</span><a href="/2019/01/06/2019-01-02-推荐系统实践（三）：冷启动问题/" title="推荐系统实践（三）：冷启动问题">http://yoursite.com/2019/01/06/2019-01-02-推荐系统实践（三）：冷启动问题/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2019/01/06/2019-01-02-推荐系统实践（三）：冷启动问题/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/推荐系统/" rel="tag"># 推荐系统</a>
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/06/2018-12-28-推荐系统实践（二）：利用用户行为数据/" rel="next" title="2018-12-28-推荐系统实践（二）：利用用户行为数据">
+                <i class="fa fa-chevron-left"></i> 2018-12-28-推荐系统实践（二）：利用用户行为数据
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/06/2019-01-04-推荐系统实践（四）：利用用户标签数据/" rel="prev" title="推荐系统实践（四）：利用用户标签数据">
+                推荐系统实践（四）：利用用户标签数据 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -848,8 +797,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -958,6 +916,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐系统实践（三）：冷启动问题"><span class="nav-number">1.</span> <span class="nav-text">推荐系统实践（三）：冷启动问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-冷启动问题简介"><span class="nav-number">1.1.</span> <span class="nav-text">1 冷启动问题简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-利用用户注册信息"><span class="nav-number">1.2.</span> <span class="nav-text">2 利用用户注册信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-利用用户对物品的反馈（启动物品）"><span class="nav-number">1.3.</span> <span class="nav-text">3 利用用户对物品的反馈（启动物品）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-利用物品的内容信息"><span class="nav-number">1.4.</span> <span class="nav-text">4 利用物品的内容信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-发挥专家的作用"><span class="nav-number">1.5.</span> <span class="nav-text">5 发挥专家的作用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1133,6 +1107,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
 
   
 
@@ -1147,6 +1125,23 @@
     <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
   
 
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/01/06/2019-01-02-推荐系统实践（三）：冷启动问题/';
+        this.page.identifier = '2019/01/06/2019-01-02-推荐系统实践（三）：冷启动问题/';
+        this.page.title = '推荐系统实践（三）：冷启动问题';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
   
 
 
@@ -1529,6 +1524,30 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
